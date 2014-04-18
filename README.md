@@ -21,9 +21,15 @@ Installation
 
     gem 'wobappshelper', github: 'swobspace/wobappshelper', branch: master
 
-Configuration
--------------
-TBD
+Usage
+-----
+
+    # myapp/app/helpers/application_helper.rb:
+    module ApplicationHelper
+      include Wobapphelpers::Helpers::ApplicationHelper
+      ...
+    end
+
 
 Deployment
 ----------
