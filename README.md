@@ -10,16 +10,17 @@ Requirements
 ------------
 * rails >= 4.1
 * ruby >= 2.0
+* bootstrap v3; must be included by by yourself (via gem or manually)
 
-System dependencies
--------------------
-
-* bootstrap-sass
 
 Installation
 ------------
 
     gem 'wobappshelper', github: 'swobspace/wobappshelper', branch: master
+
+and may be
+
+    gem 'boostrap-sass', '~> 3.1.1'
 
 Usage
 -----
@@ -31,14 +32,10 @@ Usage
     end
 
 
-Deployment
-----------
-TBD
-
 Licence
 -------
 
-boskop Copyright (C) 2014  Wolfgang Barth
+Wobappshelper Copyright (C) 2014  Wolfgang Barth
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
