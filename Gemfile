@@ -12,8 +12,3 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-
-gem "rails", "~> 4.1.0"
-gem "sqlite3"
-
-
