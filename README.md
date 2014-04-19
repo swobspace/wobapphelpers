@@ -27,7 +27,10 @@ Usage
 
     # myapp/app/helpers/application_helper.rb:
     module ApplicationHelper
-      include Wobapphelpers::Helpers::ApplicationHelper
+      include Wobapphelpers::Helpers::All
+      ...
+      #or use specific modules
+      include Wobapphelpers::Helpers::IconHelper
       ...
     end
 
