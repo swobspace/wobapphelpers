@@ -1,6 +1,8 @@
 require 'test_helper'
 
-class ApplicationHelperTest < ActionView::TestCase
+class IconHelperTest < ActionView::TestCase
+  include Wobapphelpers::Helpers::IconHelper
+
   test "icon renders span with class glyphicon" do
     render text: icon('search')
 

@@ -1,3 +1,3 @@
 module ApplicationHelper
-  include Wobapphelpers::Helpers::ApplicationHelper
+  include Wobapphelpers::Helpers::All
 end
