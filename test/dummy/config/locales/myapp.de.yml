@@ -1,0 +1,10 @@
+de:
+  activerecord:
+    models:
+      post: Posting
+
+  attributes:
+    subject: Betreff
+    body: Inhalt
+    user: Author
+    release: Datum
