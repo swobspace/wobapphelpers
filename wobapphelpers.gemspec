@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Rails helpers and more shared between wob's rails applications"
   s.license     = "GPLv2"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md", "rails/init.rb"]
   s.test_files    = Dir['test/**/*.rb']
   s.require_paths = ['lib']
 

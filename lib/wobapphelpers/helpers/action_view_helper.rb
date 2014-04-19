@@ -37,6 +37,11 @@ module Wobapphelpers
           class:  options.fetch('css', 'btn btn-danger')
       end
 
+      def cancel_button
+        link_to icon_cancel + " " + t('helpers.cancel'), 
+          url_for(:back), :class => 'btn btn-default'
+      end
+
       private
 
       def nesting_stuff(poly)
