@@ -12,8 +12,3 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-
-# gems needed for testing
-group :test do
-  gem "bootstrap-sass", "~> 3.1.1"
-end
