@@ -2,7 +2,10 @@ require 'test_helper'
 require 'sass'
 
 class ActionViewHelperTest < ActionDispatch::IntegrationTest
-  fixtures :posts
+  setup do
+    Post.create!(subject: 'brabbel', body: 'Dies ist ein Test', user: 'wob', release: Date.today)
+    Post.create!(subject: 'fasel', body: 'Dies ist ein zweiter Test', user: 'wob', release: Date.today)
+  end
 
   test "posts#index" do
     visit posts_path
@@ -14,8 +17,12 @@ class ActionViewHelperTest < ActionDispatch::IntegrationTest
       assert (all(:xpath, '//a[contains(@class,"btn btn-danger") and contains(@data-method, "delete") and contains(@title, "Posting löschen")]').length == 2), 
              "No delete posting link found"
     end
-    assert find(:xpath, '//a[@class = "btn btn-default"]/text()', 'Posting erstellen'), 
+    assert page.has_link?('Posting erstellen'), "no new post link found"
+    assert find(:xpath, '//a[contains(@class, "btn btn-default") and contains(text(), "Posting erstellen")]'), 
            "No new posting link found"
+    assert page.has_link?('Zurück'), "No back button found"
+    assert find(:xpath, '//a[contains(@class, "btn btn-default") and contains(text(), "Zurück")]'), 
+           "No back button found"
   end
 
   test "cancel_button renders span with class glyphicon" do
