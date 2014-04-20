@@ -4,6 +4,9 @@ module Wobapphelpers
     # implement model independent links for new, edit, show, delete
     module ActionViewHelper
 
+      def form_legend
+      end
+
       def new_link(model, options = {})
         link_to model.model_name.human + " erstellen",
           url_for(options.merge(:action => 'new')),
@@ -35,6 +38,11 @@ module Wobapphelpers
           method: :delete,
           title:  options.fetch('title', title(obj) + " löschen"),
           class:  options.fetch('css', 'btn btn-danger')
+      end
+
+      def back_link
+        link_to icon_left + " " + t('wobapphelpers.helpers.back'), 
+          url_for(:back), :class => 'btn btn-default'
       end
 
       def cancel_button
