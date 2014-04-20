@@ -5,6 +5,7 @@ module Wobapphelpers
     module ActionViewHelper
 
       def form_legend
+        raw(%Q[<legend class="col-sm-9 col-sm-offset-3">#{controlleraction}</legend>])
       end
 
       def new_link(model, options = {})
@@ -68,6 +69,11 @@ module Wobapphelpers
           model = obj.class
         end
         t('activerecord.models.' + model.model_name.singular)
+      end
+
+      def controlleraction
+        t("wobapphelpers.controller.#{controller.action_name}", 
+           name: t("activerecord.models.#{controller.controller_name.singularize}"))
       end
 
     end

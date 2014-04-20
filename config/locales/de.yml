@@ -3,3 +3,6 @@ de:
     helpers:
       back: "Zurück"
       cancel: "Abbrechen"
+    controller:
+      new:  "%{name} erstellen"
+      edit:  "%{name} bearbeiten"
