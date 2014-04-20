@@ -1,3 +1,4 @@
 de:
-  helpers:
-    cancel: "Abbrechen"
+  wobapphelpers:
+    helpers:
+      cancel: "Abbrechen"

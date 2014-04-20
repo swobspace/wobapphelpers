@@ -38,7 +38,7 @@ module Wobapphelpers
       end
 
       def cancel_button
-        link_to icon_cancel + " " + t('helpers.cancel'), 
+        link_to icon_cancel + " " + t('.helpers.cancel'), 
           url_for(:back), :class => 'btn btn-default'
       end
 
