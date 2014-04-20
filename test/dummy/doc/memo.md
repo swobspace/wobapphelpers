@@ -1,6 +1,9 @@
 Customizing dummy application
 =============================
 
+Generators
+----------
+
     # config/application.rb
     config.generators do |g|
       g.orm             :active_record
@@ -9,3 +12,7 @@ Customizing dummy application
       g.stylesheets     false
       g.javascripts     false
     end
+
+SimpleForm
+----------
+    bundle exec rails g simple_form:install --bootstrap

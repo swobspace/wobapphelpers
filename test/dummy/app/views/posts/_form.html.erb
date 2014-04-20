@@ -1,0 +1,31 @@
+<%= simple_form_for(@post,
+  html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  }) do |f| %>
+  <%= f.error_notification %>
+
+    <fieldset>
+      <%= form_legend %>
+
+    <div class="form-inputs">
+      <%= f.input :subject
+       %>
+      <%= f.input :body
+       %>
+      <%= f.input :user
+       %>
+      <%= f.input :release
+       %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= cancel_button %>
+    </div>
+  </fieldset>
+<% end %>
