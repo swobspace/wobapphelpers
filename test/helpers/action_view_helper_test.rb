@@ -27,15 +27,11 @@ class ActionViewHelperTest < ActionDispatch::IntegrationTest
 
   test "cancel_button renders span with class glyphicon" do
     visit new_post_path
-    assert page.has_text?('New post')
+    assert page.has_text?('Posting erstellen')
     within('form') do
-      assert page.has_button?('submit'), "button submit not found"
+      assert page.has_link?('Abbrechen'), "button submit not found"
       assert find('a.btn.btn-default span.glyphicon.glyphicon-remove'), 
              "button cancel not found"
-      # assert find(:xpath, '//a[@class = "btn btn-default"]/text()', 'Abbrechen'), 
-      # assert page.has_button?('cancel'), "button cancel not found"
-      # assert page.has_button?('Cancel'), "button cancel not found"
-      # assert page.has_button?('Abbrechen'), "button cancel not found"
    end
   end
 
