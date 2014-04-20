@@ -6,8 +6,8 @@ module Wobapphelpers
       desc "Copy simple_form templates to your application"
 
       def copy_scaffold_templates
-        ["show", "edit", "new", "index", "_form"].each do |file|
-          copy_file "erb/scaffold/#{file}.html.erb", "lib/templates/erb/scaffold/#{file}"
+        ["show.html.erb", "edit.html.erb", "new.html.erb", "index.html.erb", "_form.html.erb"].each do |file|
+          copy_file "erb/scaffold/#{file}", "lib/templates/erb/scaffold/#{file}"
         end
       end
     end
