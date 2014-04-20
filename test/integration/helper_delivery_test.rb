@@ -8,4 +8,9 @@ class HelperDeliveryTest < ActionDispatch::IntegrationTest
       assert_match "<span class=\"glyphicon glyphicon-#{value}\"></span>", response.body
     end
   end
+
+  test "using new_link for Post" do
+    get posts_path
+    assert_response :success
+  end
 end
