@@ -12,3 +12,8 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+# -- using prelease 3.1, move simple_form to gemspec after official release
+gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git',
+                   branch: 'master'
+
