@@ -22,6 +22,14 @@ and may be
 
     gem 'boostrap-sass', '~> 3.1.1'
 
+Generators
+----------
+
+wobapphelpers comes with some generators to install templates and so on:
+
+  * rails g wobapphelpers:init : installs some locales 
+  * rails g wobapphelpers:simple_form : installs scaffold erb templates using simple_form and bootstrap.
+
 Usage
 -----
 
