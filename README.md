@@ -11,6 +11,7 @@ Requirements
 * rails >= 4.1
 * ruby >= 2.0
 * bootstrap v3; must be included by by yourself (via gem or manually)
+* simple_form >= 3.1
 
 
 Installation
@@ -20,7 +21,8 @@ Installation
 
 and may be
 
-    gem 'boostrap-sass', '~> 3.1.1'
+    gem 'bootstrap-sass', '~> 3.1.1'
+    gem 'simple_form', '~> 3.1'
 
 Generators
 ----------
@@ -28,10 +30,17 @@ Generators
 wobapphelpers comes with some generators to install templates and so on:
 
   * rails g wobapphelpers:init : installs some locales 
-  * rails g wobapphelpers:simple_form : installs scaffold erb templates using simple_form and bootstrap.
+  * rails g wobapphelpers:scaffold_templates : installs scaffold erb and templates 
+and a controller template using simple_form and bootstrap, responders and the 
+famous respond_with method.
 
 Usage
 -----
+
+### Helpers
+
+Helpers to ease use of glyphicon icons, predefined action links (i.e. edit_link),
+show_flash, and more ...
 
     # myapp/app/helpers/application_helper.rb:
     module ApplicationHelper
@@ -39,6 +48,18 @@ Usage
       ...
       #or use specific modules
       include Wobapphelpers::Helpers::IconHelper
+      include Wobapphelpers::Helpers::ActionViewHelper
+      ...
+    end
+
+### Responders
+
+Predefined settings for FlashResponder in gem 'responders' 
+(https://github.com/plataformatec/responders) including german locales.
+
+    # myapp/app/controllers/application_controller.rb
+    class ApplicationController < ActionController::Base
+      self.responder = Wobapphelpers::Responders
       ...
     end
 
