@@ -11,6 +11,10 @@ module Wobapphelpers
                     "config/locales/wobapphelpers.#{lang}.yml"
         end
       end
+
+      def copy_layout
+        copy_file "layouts/application.html.erb", "app/views/layouts/application.html.erb"
+      end
     end
   end
 end
