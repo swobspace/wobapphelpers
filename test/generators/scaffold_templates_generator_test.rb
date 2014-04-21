@@ -1,7 +1,7 @@
 require "test_helper"
 
-class ViewTemplatesGeneratorTest < Rails::Generators::TestCase
-  tests Wobapphelpers::Generators::ViewTemplatesGenerator
+class ScaffoldTemplatesGeneratorTest < Rails::Generators::TestCase
+  tests Wobapphelpers::Generators::ScaffoldTemplatesGenerator
   destination File.expand_path("../../tmp", __FILE__)
   setup :prepare_destination
 
@@ -11,5 +11,6 @@ class ViewTemplatesGeneratorTest < Rails::Generators::TestCase
       "index.html.erb", "_form.html.erb"].each do |file|
       assert_file "lib/templates/erb/scaffold/#{file}"
     end
+    assert_file "lib/templates/rails/scaffold_controller/controller.rb"
   end
 end
