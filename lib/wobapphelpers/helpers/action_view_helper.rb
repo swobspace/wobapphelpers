@@ -52,7 +52,7 @@ module Wobapphelpers
       end
 
       def show_flash
-        "#{flash[:notice]} -#{flash[:alert]}"
+        "- #{flash[:success]} - #{flash[:notice]} - #{flash[:alert]} -"
       end
 
       private

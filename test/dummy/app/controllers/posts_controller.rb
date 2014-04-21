@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all
-    flash[:notice] = "Always done"
+    flash[:success] = "Always done"
     respond_with(@posts)
   end
 
