@@ -9,15 +9,18 @@ class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>
   def index
     @<%= plural_table_name %> = <%= orm_class.all(class_name) %>
+    respond_with(@<%= plural_table_name %>)
   end
 
   # GET <%= route_url %>/1
   def show
+    respond_with(@<%= singular_table_name %>)
   end
 
   # GET <%= route_url %>/new
   def new
     @<%= singular_table_name %> = <%= orm_class.build(class_name) %>
+    respond_with(@<%= singular_table_name %>)
   end
 
   # GET <%= route_url %>/1/edit
@@ -28,26 +31,20 @@ class <%= controller_class_name %>Controller < ApplicationController
   def create
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
 
-    if @<%= orm_instance.save %>
-      redirect_to @<%= singular_table_name %>, notice: <%= "'#{human_name} was successfully created.'" %>
-    else
-      render :new
-    end
+    @<%= orm_instance.save %>
+    respond_with(@<%= singular_table_name %>)
   end
 
   # PATCH/PUT <%= route_url %>/1
   def update
-    if @<%= orm_instance.update("#{singular_table_name}_params") %>
-      redirect_to @<%= singular_table_name %>, notice: <%= "'#{human_name} was successfully updated.'" %>
-    else
-      render :edit
-    end
+    @<%= orm_instance.update("#{singular_table_name}_params") %>
+    respond_with(@<%= singular_table_name %>)
   end
 
   # DELETE <%= route_url %>/1
   def destroy
     @<%= orm_instance.destroy %>
-    redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully destroyed.'" %>
+    respond_with(@<%= singular_table_name %>)
   end
 
   private
