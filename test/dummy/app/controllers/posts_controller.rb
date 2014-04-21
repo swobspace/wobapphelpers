@@ -4,15 +4,19 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all
+    flash[:notice] = "Always done"
+    respond_with(@posts)
   end
 
   # GET /posts/1
   def show
+    respond_with(@post)
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    respond_with(@post)
   end
 
   # GET /posts/1/edit
@@ -22,27 +26,20 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new(post_params)
-
-    if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
-    else
-      render :new
-    end
+    @post.save
+    respond_with(@post)
   end
 
   # PATCH/PUT /posts/1
   def update
-    if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
-    else
-      render :edit
-    end
+    @post.update(post_params)
+    respond_with(@post)
   end
 
   # DELETE /posts/1
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    respond_with(@post)
   end
 
   private
