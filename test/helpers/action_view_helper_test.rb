@@ -1,5 +1,6 @@
 require 'test_helper'
 require 'sass'
+require 'jquery-rails'
 
 class ActionViewHelperTest < ActionDispatch::IntegrationTest
   setup do
@@ -34,5 +35,4 @@ class ActionViewHelperTest < ActionDispatch::IntegrationTest
              "button cancel not found"
    end
   end
-
 end
