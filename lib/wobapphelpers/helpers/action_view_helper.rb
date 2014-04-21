@@ -52,7 +52,27 @@ module Wobapphelpers
       end
 
       def show_flash
-        "- #{flash[:success]} - #{flash[:notice]} - #{flash[:alert]} -"
+        # "- #{flash[:success]} - #{flash[:notice]} - #{flash[:alert]} -"
+	msg = ""
+	[:alert, :error, :notice, :success, :info].each do |severity|
+	  next unless flash[severity]
+	  case severity
+	  when :error, :alert
+	    my_class = "alert alert-error"
+	  when :notice, :info
+	    my_class = "alert alert-info"
+	  when :success
+	    my_class = "alert alert-success"
+	  else
+	    my_class = severity.to_s
+	  end
+	  msg += %Q[<div id="#{severity.to_s}" class="#{my_class} alert-dismissable fade in noprint">]
+	  msg += %Q[<button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>]
+	  msg += flash[severity]
+	  msg += %Q[</div>]
+	end
+	msg.html_safe
+
       end
 
       private
