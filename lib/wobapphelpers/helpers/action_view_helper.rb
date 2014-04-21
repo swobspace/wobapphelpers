@@ -51,6 +51,10 @@ module Wobapphelpers
           url_for(:back), :class => 'btn btn-default'
       end
 
+      def show_flash
+        "#{flash[:notice]} -#{flash[:alert]}"
+      end
+
       private
 
       def nesting_stuff(poly)
