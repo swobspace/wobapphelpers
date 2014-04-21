@@ -24,3 +24,8 @@ class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
 end
+
+# For generators
+require "rails/generators/test_case"
+require "generators/wobapphelpers/install_generator"
+require "generators/wobapphelpers/view_templates_generator"
