@@ -1,6 +1,6 @@
 module Wobapphelpers
   module Generators
-    class SimpleFormGenerator < Rails::Generators::Base
+    class ViewTemplatesGenerator < Rails::Generators::Base
       source_root File.expand_path("../../templates", __FILE__)
       
       desc "Copy simple_form templates to your application"
