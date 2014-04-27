@@ -5,5 +5,6 @@ module Wobapphelpers
     
     ::ActionController::Base.send :include, Wobapphelpers::Breadcrumbs::ActionController
     ::ActionView::Base.send :include, Wobapphelpers::Breadcrumbs::ActionView
+    ::ActionController::Base.send :before_action, "add_breadcrumb_index", only: :index
   end
 end

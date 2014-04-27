@@ -8,3 +8,6 @@ de:
     body: Inhalt
     user: Author
     release: Datum
+
+  controller:
+    posts: Postings

@@ -21,6 +21,14 @@ module Wobapphelpers
       def last_breadcrumb_url
 	last_breadcrumb[1]
       end
+
+      def add_breadcrumb_index
+	return if request.format == :json
+	text = t("controller.#{controller_name}")
+	url  = request.fullpath
+	add_breadcrumb(text, url)
+      end
+
     end
   end
 end
