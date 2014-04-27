@@ -9,36 +9,44 @@ module Wobapphelpers
       end
 
       def new_link(model, options = {})
-        link_to model.model_name.human + " erstellen",
-          url_for(options.merge(:action => 'new')),
-          title: options.fetch('title', title(model) + " hinzufügen"),
-          class: options.fetch('css', 'btn btn-default')
+        if _can?(:create, model)
+          link_to model.model_name.human + " erstellen",
+            url_for(options.merge(:action => 'new')),
+            title: options.fetch('title', title(model) + " hinzufügen"),
+            class: options.fetch('css', 'btn btn-default')
+        end
       end
 
       def show_link(poly, options = {})
         parent, obj = nesting_stuff(poly)
-        link_to icon_show, polymorphic_path(poly), 
-          remote: options.fetch('remote', false),
-          title:  options.fetch('title', title(obj) + " anzeigen"),
-          class:  options.fetch('css', 'btn btn-default')
+        if _can?(:read, obj)
+          link_to icon_show, polymorphic_path(poly), 
+            remote: options.fetch('remote', false),
+            title:  options.fetch('title', title(obj) + " anzeigen"),
+            class:  options.fetch('css', 'btn btn-default')
+        end
       end
 
       def edit_link(poly, options = {})
         parent, obj = nesting_stuff(poly)
-        link_to icon_edit, edit_polymorphic_path(poly), 
-          remote: options.fetch('remote', false),
-          title:  options.fetch('title', title(obj) + " bearbeiten"),
-          class:  options.fetch('css', 'btn btn-default')
+        if _can?(:edit, obj)
+          link_to icon_edit, edit_polymorphic_path(poly), 
+            remote: options.fetch('remote', false),
+            title:  options.fetch('title', title(obj) + " bearbeiten"),
+            class:  options.fetch('css', 'btn btn-default')
+        end
       end
 
       def delete_link(poly, options = {})
         parent, obj = nesting_stuff(poly)
-        link_to icon_delete, poly, 
-          remote: options.fetch('remote', false),
-          data: { confirm: "Sie wollen das Objekt löschen.\nSind Sie sicher?" }, 
-          method: :delete,
-          title:  options.fetch('title', title(obj) + " löschen"),
-          class:  options.fetch('css', 'btn btn-danger')
+        if _can?(:destroy, obj)
+          link_to icon_delete, poly, 
+            remote: options.fetch('remote', false),
+            data: { confirm: "Sie wollen das Objekt löschen.\nSind Sie sicher?" }, 
+            method: :delete,
+            title:  options.fetch('title', title(obj) + " löschen"),
+            class:  options.fetch('css', 'btn btn-danger')
+        end
       end
 
       def back_link
@@ -98,6 +106,10 @@ module Wobapphelpers
       def controlleraction
         t("wobapphelpers.controller.#{controller.action_name}", 
            name: t("activerecord.models.#{controller.controller_name.singularize}"))
+      end
+
+      def _can?(action, obj)
+        true
       end
 
     end
