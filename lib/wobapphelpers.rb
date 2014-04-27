@@ -1,6 +1,7 @@
 module Wobapphelpers
   autoload :Helpers, 'wobapphelpers/helpers'
   autoload :Responders, 'wobapphelpers/responders'
+  autoload :Breadcrumbs, 'wobapphelpers/breadcrumbs'
 
   def self.setup
     yield self

@@ -1,3 +1,4 @@
+require 'wobapphelpers/breadcrumbs'
 Wobapphelpers.setup do |config|
   # show action links only if has ability to execute the action
   # * :none : always present action links

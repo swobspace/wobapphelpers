@@ -5,11 +5,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     flash[:success] = "Always done"
+    add_breadcrumb("Postings", "/posts")
     respond_with(@posts)
   end
 
   # GET /posts/1
   def show
+    add_breadcrumb("Post(#{@post.id})", "/posts/#{@post.id}")
     respond_with(@post)
   end
 
