@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require "rails/test_help"
 require 'capybara/rails'
+require 'mocha/test_unit'
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -29,3 +30,11 @@ end
 require "rails/generators/test_case"
 require "generators/wobapphelpers/install_generator"
 require "generators/wobapphelpers/scaffold_templates_generator"
+require "cancancan"
+
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+  end
+end

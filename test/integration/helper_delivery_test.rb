@@ -9,7 +9,7 @@ class HelperDeliveryTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "using new_link for Post" do
+  test "Post#index" do
     get posts_path
     assert_response :success
   end

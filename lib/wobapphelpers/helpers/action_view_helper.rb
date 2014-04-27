@@ -109,9 +109,18 @@ module Wobapphelpers
       end
 
       def _can?(action, obj)
-        true
+        return true if Wobapphelpers.cancan == :none
+        obj = _normalize(obj) if obj.kind_of? Class
+        can? action, obj
       end
 
+      def _normalize(model) 
+        if Wobapphelpers.cancan == :cancan2
+          model.model_name.downcase.pluralize.to_sym
+        else
+          model
+        end
+      end
     end
   end
 end
