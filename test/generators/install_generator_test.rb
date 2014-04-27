@@ -19,4 +19,11 @@ class InstallGeneratorTest < Rails::Generators::TestCase
       assert_match(/meta name="viewport"/, layout)
     end
   end
+
+  test "Initializer is copied" do
+    run_generator
+    assert_file "config/initializers/wobapphelpers.rb" do |init|
+      assert_match(/Wobapphelpers.setup/, init)
+    end
+  end
 end
