@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
-    add_breadcrumb("Posting(#{@post.id})", "/posts/#{@post.id}")
+    # add_breadcrumb("Posting(#{@post.id})", "/posts/#{@post.id}")
     respond_with(@post)
   end
 

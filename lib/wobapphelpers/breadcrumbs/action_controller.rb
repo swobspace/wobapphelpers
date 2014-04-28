@@ -29,6 +29,29 @@ module Wobapphelpers
 	add_breadcrumb(text, url)
       end
 
+      def add_breadcrumb_show
+        resource = controller_name.singularize
+        if instance_variable_defined?("@#{resource}")
+          add_breadcrumb_for instance_variable_get("@#{resource}")
+        else
+          flash[:alert] = "add_breadcrumb_show: instance variable @#{resource} not set; see documentation for Wobapphelpers::Breadcrumbs"
+        end
+      end
+
+      def add_breadcrumb_for(poly)
+	if poly.is_a? Array
+	  (parent, child) = poly
+	  name  = "#{t('activerecord.models.'+parent.class.name.underscore)}(#{parent.id})/"
+	  if child.is_a? Symbol
+	    name += "#{t('attributes.'+child.to_s)}"
+	  else
+	    name += "#{t('activerecord.models.'+child.class.name.underscore)}(#{child.id})"
+	  end
+	else
+	  name = "#{t('activerecord.models.' + poly.class.name.underscore)}(#{poly.id})"
+	end
+	add_breadcrumb name, polymorphic_path(poly)
+      end
     end
   end
 end
