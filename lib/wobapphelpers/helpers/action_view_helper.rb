@@ -3,6 +3,7 @@ module Wobapphelpers
 
     # implement model independent links for new, edit, show, delete
     module ActionViewHelper
+      include Wobapphelpers::Breadcrumbs::BreadcrumbsHelper
 
       def form_legend
         raw(%Q[<legend class="col-sm-9 col-sm-offset-3">#{controlleraction}</legend>])
@@ -49,9 +50,21 @@ module Wobapphelpers
         end
       end
 
-      def back_link
-        link_to icon_left + " " + t('wobapphelpers.helpers.back'), 
-          url_for(:back), :class => 'btn btn-default'
+      def back_link(options = {})
+	unless options[:path].nil?
+	  goto = options[:path]
+	else
+          label = icon_left + " " + t('wobapphelpers.helpers.back')
+	  if session[:breadcrumbs] && session[:breadcrumbs].size > 1
+	    bc = session[:breadcrumbs][-2]
+	    idx   =  session[:breadcrumbs].size - 2
+	    title = bc[0]
+	    goto  = bc[1]
+	    breadcrumb_idx(label, goto, idx, 'btn btn-default')
+	  else
+	    link_to label, url_for(:back), :class => 'btn btn-default'
+	  end
+        end
       end
 
       def cancel_button
