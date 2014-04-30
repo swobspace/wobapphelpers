@@ -63,6 +63,64 @@ Predefined settings for FlashResponder in gem 'responders'
       ...
     end
 
+### Breadcrumbs
+
+Build breadcrumbs in the sense of backtrace, not of deepness. An example for 
+classical breadcrumbs is 
+
+    Home >> Posts >> posts#show
+
+Wobapphelpers::Breadcrumbs store a the last 6 urls. A breadcrumb will only be 
+added if the url differs from the last breadcrumb on the stack. 
+Wobapphelper::Breadcrumbs should be use in normal display actions like index 
+or show, but not in actions which are redirecting to others (not in :create,
+:update) and best not to be use in form actions like :edit and :new. The latter 
+is a question of user experience, not a technical question. The back_link 
+from Wobapphelpers::Helpers::ActionViewHelper uses breadcrumbs, if available,
+so it would be better to build your own back link if you set breadcrumbs for
+:new and :edit.
+
+#### Usage
+
+Setting breadcrumbs for index can be done in ApplicationController:
+
+    # myapp/app/controllers/application_controller.rb
+    class ApplicationController < ActionController::Base
+      include Wobapphelpers::Breadcrumbs
+      before_filter :add_breadcrumb_index, only: [:index]
+      ...
+    end
+
+Breadcrumbs for @post must be set after retrieving the object from database.
+Pay attention to the correct order of before_action. 
+
+    # myapp/app/controllers/posts_controller.rb
+    class PostsController < ApplicationController
+      before_action :set_post, only: [:show, :edit, :update, :destroy]
+      before_action :add_breadcrumb_show, only: [:show]
+      ....
+    
+      private
+    
+      def set set_post
+       @post = Post.find(params[:id])
+      end
+    end
+
+
+For :add_breadcrumb_show the variable must be named after your Model. For 
+other variable names you have to use :add_breadcrumbs_for, i.e.
+
+    # myapp/app/controllers/posts_controller.rb
+    class PostsController < ApplicationController
+      ...
+      def show
+        @other = Post.find(params[:id])
+        add_breadcrumbs_for(@other)
+      end
+      ...
+    end
+
 
 Licence
 -------
