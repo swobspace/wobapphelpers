@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :add_breadcrumb_show, only: [:show]
 
   # GET /posts
   def index
@@ -10,6 +11,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
+    # add_breadcrumb_for(@post)
     # add_breadcrumb("Posting(#{@post.id})", "/posts/#{@post.id}")
     respond_with(@post)
   end

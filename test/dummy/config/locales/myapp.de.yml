@@ -10,4 +10,5 @@ de:
     release: Datum
 
   controller:
+    home: Home
     posts: Postings
