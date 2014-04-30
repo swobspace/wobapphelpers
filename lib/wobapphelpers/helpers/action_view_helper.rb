@@ -80,7 +80,6 @@ module Wobapphelpers
 	  msg += %Q[</div>]
 	end
 	msg.html_safe
-
       end
 
       private
