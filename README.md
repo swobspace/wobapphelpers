@@ -70,17 +70,21 @@ classical breadcrumbs is
 
     Home >> Posts >> posts#show
 
-Wobapphelpers::Breadcrumbs store a the last 6 urls. A breadcrumb will only be 
+Wobapphelpers::Breadcrumbs store a the last 6 urls like this:
+
+    Home >> Posts >> Post(1) >> Others >> Posts
+
+A breadcrumb will only be 
 added if the url differs from the last breadcrumb on the stack. 
 Wobapphelper::Breadcrumbs should be use in normal display actions like index 
 or show, but not in actions which are redirecting to others (not in :create,
-:update) and best not to be use in form actions like :edit and :new. The latter 
+:update) and best not to use in form actions like :edit and :new. The latter 
 is a question of user experience, not a technical question. The back_link 
 from Wobapphelpers::Helpers::ActionViewHelper uses breadcrumbs, if available,
 so it would be better to build your own back link if you set breadcrumbs for
 :new and :edit.
 
-#### Usage
+#### Breadcrumbs for #index
 
 Setting breadcrumbs for index can be done in ApplicationController:
 
@@ -91,8 +95,10 @@ Setting breadcrumbs for index can be done in ApplicationController:
       ...
     end
 
+#### Breadcrumbs for #show
+
 Breadcrumbs for @post must be set after retrieving the object from database.
-Pay attention to the correct order of before_action. 
+Pay attention to the correct order of before_actions:
 
     # myapp/app/controllers/posts_controller.rb
     class PostsController < ApplicationController
@@ -106,6 +112,14 @@ Pay attention to the correct order of before_action.
        @post = Post.find(params[:id])
       end
     end
+
+#### Generic Functions
+
+    # add a breadcrumb manually
+    add_breadcrumb(name, url)
+
+    # get the last breadcrumb from stack
+    last_breadcrumb_url
 
 
 For :add_breadcrumb_show the variable must be named after your Model. For 
