@@ -7,6 +7,10 @@ module Wobapphelpers
     yield self
   end
 
+  # exclude controllers from breadcrumbs
+  #
+  mattr_accessor :breadcrumb_controller_blacklist
+  @@breadcrumb_controller_blacklist = []
 
   # Use cancan abilities to decide if action links should be presented. 
   # Defaults to :none
