@@ -1,6 +1,6 @@
 module Wobapphelpers
   module Breadcrumbs
-    module BreadcrumbHelper
+    module BreadcrumbsHelper
     end
   end
 end
