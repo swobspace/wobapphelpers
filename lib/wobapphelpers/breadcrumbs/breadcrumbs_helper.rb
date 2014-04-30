@@ -1,6 +1,6 @@
 module Wobapphelpers
   module Breadcrumbs
-    module ActionView
+    module BreadcrumbHelper
     end
   end
 end
