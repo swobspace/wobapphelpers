@@ -31,3 +31,7 @@ module Wobapphelpers
     end
   end
 end
+
+if defined?(::Rails)
+  require 'wobapphelpers/rails'
+end

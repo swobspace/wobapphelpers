@@ -121,6 +121,17 @@ Pay attention to the correct order of before_actions:
     # get the last breadcrumb from stack
     last_breadcrumb_url
 
+#### Styling breadcrumbs
+
+Use builtin styling:
+
+    /* application.css
+    *= require wobapphelpers/breadcrumbs
+    /* ...
+
+or build your own stuff. :render_breadcrumbs gives you 
+a div#breadcrumbs tag.
+
 
 For :add_breadcrumb_show the variable must be named after your Model. For 
 other variable names you have to use :add_breadcrumbs_for, i.e.
