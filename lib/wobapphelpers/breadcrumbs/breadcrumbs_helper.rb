@@ -2,7 +2,7 @@ module Wobapphelpers
   module Breadcrumbs
     module BreadcrumbsHelper
       def render_breadcrumbs
-	return if Wobapphelpers.breadcrumb_controller_blacklist.include?(controller.controller_name)
+	return if Wobapphelpers.breadcrumb_controller_blacklist.include?(controller.controller_path)
 	return if session[:breadcrumbs].nil? || session[:breadcrumbs].size == 0
 	track = ""
 	session[:breadcrumbs].each_with_index do |b, idx|

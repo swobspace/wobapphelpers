@@ -112,12 +112,12 @@ module Wobapphelpers
         else
           model = obj.class
         end
-        t('activerecord.models.' + model.model_name.singular)
+        t('activerecord.models.' + model.model_name.i18n_key.to_s)
       end
 
       def controlleraction
         t("wobapphelpers.controller.#{controller.action_name}", 
-           name: t("activerecord.models.#{controller.controller_name.singularize}"))
+           name: t("activerecord.models.#{controller.controller_path.singularize}"))
       end
 
       def _can?(action, obj)
