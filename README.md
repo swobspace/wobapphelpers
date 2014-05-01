@@ -17,7 +17,7 @@ Requirements
 Installation
 ------------
 
-    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: master
+    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "master"
 
 and may be
 
