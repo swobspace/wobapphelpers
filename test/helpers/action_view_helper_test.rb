@@ -30,7 +30,7 @@ class ActionViewHelperTest < ActionDispatch::IntegrationTest
 
     should "cancel_button renders span with class glyphicon" do
       visit new_post_path
-      assert page.has_text?('Posting erstellen')
+      assert page.has_text?('Post/new')
       within('form') do
 	assert page.has_link?('Abbrechen'), "button submit not found"
 	assert find('a.btn.btn-default span.glyphicon.glyphicon-remove'), 

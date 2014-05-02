@@ -3,6 +3,13 @@ de:
     helpers:
       back: "Zurück"
       cancel: "Abbrechen"
+
     controller:
       new:  "%{name} erstellen"
       edit:  "%{name} bearbeiten"
+
+      posts:
+        new: "Post/new"
+        create: "Post/create"
+        edit: "Post/edit"
+        update: "Post/update"
