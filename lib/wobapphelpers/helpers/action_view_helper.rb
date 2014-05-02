@@ -79,7 +79,7 @@ module Wobapphelpers
 	  next unless flash[severity]
 	  case severity
 	  when :error, :alert
-	    my_class = "alert alert-error"
+	    my_class = "alert alert-danger"
 	  when :notice, :info
 	    my_class = "alert alert-info"
 	  when :success
