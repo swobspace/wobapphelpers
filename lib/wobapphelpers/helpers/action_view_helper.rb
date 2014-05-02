@@ -116,8 +116,12 @@ module Wobapphelpers
       end
 
       def controlleraction
-        t("wobapphelpers.controller.#{controller.action_name}", 
-           name: t("activerecord.models.#{controller.controller_path.singularize}"))
+        action        = controller.action_name
+        namespace     = controller.controller_path
+        resource_name = t("activerecord.models.#{namespace.singularize}")
+        search_for    = [namespace, action].join(".").to_sym
+        t(search_for, scope: "wobapphelpers.controller".to_sym, 
+          default: action.to_sym, name: resource_name)
       end
 
       def _can?(action, obj)
