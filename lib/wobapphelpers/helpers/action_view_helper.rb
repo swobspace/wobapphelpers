@@ -95,6 +95,12 @@ module Wobapphelpers
 	msg.html_safe
       end
 
+      def active_class(myclass)
+        if controller.controller_name == myclass
+          "active"
+        end
+      end
+
       private
 
       def nesting_stuff(poly)
