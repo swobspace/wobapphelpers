@@ -13,4 +13,10 @@ class HelperDeliveryTest < ActionDispatch::IntegrationTest
     get posts_path
     assert_response :success
   end
+
+  test "render new_link for all models" do
+    get home_path
+    assert_select "a[href=?]", "/posts/new", count: 1
+    assert_select "a[href=?]", "/blogs/new", count: 1
+  end
 end

@@ -12,7 +12,7 @@ module Wobapphelpers
       def new_link(model, options = {})
         if _can?(:create, model)
           link_to model.model_name.human + " erstellen",
-            url_for(options.merge(:action => 'new')),
+            new_polymorphic_path(model, options),
             title: options.fetch('title', title(model) + " hinzufügen"),
             class: options.fetch('css', 'btn btn-default')
         end
