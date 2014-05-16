@@ -1,0 +1,25 @@
+<table class="table table-bordered table-hover autowidth">
+  <tr>
+    <th><%= t('attributes.subject')%>:</th>
+    <td><%= @blog.subject %></td>
+  </tr>
+  <tr>
+    <th><%= t('attributes.body')%>:</th>
+    <td><%= @blog.body %></td>
+  </tr>
+  <tr>
+    <th><%= t('attributes.user')%>:</th>
+    <td><%= @blog.user %></td>
+  </tr>
+  <tr>
+    <th><%= t('attributes.release')%>:</th>
+    <td><%= @blog.release %></td>
+  </tr>
+</table>
+
+<div class="btn-toolbar" role="toolbar">
+  <%= back_link %>
+  <%= edit_link(@blog) %>
+  <%= delete_link(@blog) %>
+  <%= new_link Blog %>
+</div>

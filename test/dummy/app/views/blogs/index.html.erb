@@ -1,0 +1,34 @@
+<h1><%= t('controller.blogs') %></h1>
+
+<table id="dataTable" class="table table-bordered table-striped dataTable">
+<thead>
+  <tr>
+    <th><%= t('attributes.subject') %></th>
+    <th><%= t('attributes.body') %></th>
+    <th><%= t('attributes.user') %></th>
+    <th><%= t('attributes.release') %></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+
+<% @blogs.each do |blog| %>
+  <%= content_tag_for(:tr, blog) do %>
+    <td><%= blog.subject %></td>
+    <td><%= blog.body %></td>
+    <td><%= blog.user %></td>
+    <td><%= blog.release %></td>
+    <td class="nowrap">
+      <%= show_link blog %>
+      <%= edit_link blog %>
+      <%= delete_link blog %>
+    </td>
+  <% end %>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= back_link %>
+<%= new_link Blog %>
