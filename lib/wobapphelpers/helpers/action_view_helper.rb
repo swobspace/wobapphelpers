@@ -11,46 +11,52 @@ module Wobapphelpers
 
       def new_link(model, options = {})
         if _can?(:create, model)
+          options.symbolize_keys!
           link_to model.model_name.human + " erstellen",
             new_polymorphic_path(model, options),
-            title: options.fetch('title', title(model) + " hinzufügen"),
-            class: options.fetch('class', 'btn btn-default')
+            remote: options.fetch(:remote, false),
+            title: options.fetch(:title, title(model) + " hinzufügen"),
+            class: options.fetch(:class, 'btn btn-default')
         end
       end
 
       def show_link(poly, options = {})
         parent, obj = nesting_stuff(poly)
         if _can?(:read, obj)
+          options.symbolize_keys!
           link_to icon_show, polymorphic_path(poly), 
-            remote: options.fetch('remote', false),
-            title:  options.fetch('title', title(obj) + " anzeigen"),
-            class:  options.fetch('class', 'btn btn-default')
+            remote: options.fetch(:remote, false),
+            title:  options.fetch(:title, title(obj) + " anzeigen"),
+            class:  options.fetch(:class, 'btn btn-default')
         end
       end
 
       def edit_link(poly, options = {})
         parent, obj = nesting_stuff(poly)
         if _can?(:edit, obj)
+          options.symbolize_keys!
           link_to icon_edit, edit_polymorphic_path(poly), 
-            remote: options.fetch('remote', false),
-            title:  options.fetch('title', title(obj) + " bearbeiten"),
-            class:  options.fetch('class', 'btn btn-default')
+            remote: options.fetch(:remote, false),
+            title:  options.fetch(:title, title(obj) + " bearbeiten"),
+            class:  options.fetch(:class, 'btn btn-default')
         end
       end
 
       def delete_link(poly, options = {})
         parent, obj = nesting_stuff(poly)
         if _can?(:destroy, obj)
+          options.symbolize_keys!
           link_to icon_delete, poly, 
-            remote: options.fetch('remote', false),
+            remote: options.fetch(:remote, false),
             data: { confirm: "Sie wollen das Objekt löschen.\nSind Sie sicher?" }, 
             method: :delete,
-            title:  options.fetch('title', title(obj) + " löschen"),
-            class:  options.fetch('class', 'btn btn-danger')
+            title:  options.fetch(:title, title(obj) + " löschen"),
+            class:  options.fetch(:class, 'btn btn-danger')
         end
       end
 
       def back_link(options = {})
+        options.symbolize_keys!
 	unless options[:path].nil?
 	  goto = options[:path]
 	else
