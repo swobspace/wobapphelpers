@@ -152,7 +152,7 @@ Licence
 
 Wobapphelpers Copyright (C) 2014  Wolfgang Barth
 
-MIT License, see LICENSE
+MIT License, see [LICENSE](LICENSE)
 
 This plugin makes use of use of the famous Glyphicon Halflings set which is
 include in bootstrap for free of cost. You find more information about
