@@ -3,9 +3,6 @@ wobapphelpers
 
 Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap. 
 
-**THIS PLUGIN IS WORK IN PROGRESS AND NOT FUNCTIONAL YET!**
-You will loose all your hair and teeth if you use it ;-)
-
 Requirements
 ------------
 * rails >= 4.1
