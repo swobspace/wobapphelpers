@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/swobspace/wobapphelpers"
   s.summary     = "Rails helpers and more shared between wob's rails applications"
   s.description = "Rails helpers and more shared between wob's rails applications"
-  s.license     = "GPLv2"
+  s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md", "rails/init.rb"]
   s.test_files    = Dir['test/**/*.rb']
