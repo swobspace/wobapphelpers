@@ -14,7 +14,7 @@ module Wobapphelpers
           link_to model.model_name.human + " erstellen",
             new_polymorphic_path(model, options),
             title: options.fetch('title', title(model) + " hinzufügen"),
-            class: options.fetch('css', 'btn btn-default')
+            class: options.fetch('class', 'btn btn-default')
         end
       end
 
@@ -24,7 +24,7 @@ module Wobapphelpers
           link_to icon_show, polymorphic_path(poly), 
             remote: options.fetch('remote', false),
             title:  options.fetch('title', title(obj) + " anzeigen"),
-            class:  options.fetch('css', 'btn btn-default')
+            class:  options.fetch('class', 'btn btn-default')
         end
       end
 
@@ -34,7 +34,7 @@ module Wobapphelpers
           link_to icon_edit, edit_polymorphic_path(poly), 
             remote: options.fetch('remote', false),
             title:  options.fetch('title', title(obj) + " bearbeiten"),
-            class:  options.fetch('css', 'btn btn-default')
+            class:  options.fetch('class', 'btn btn-default')
         end
       end
 
@@ -46,7 +46,7 @@ module Wobapphelpers
             data: { confirm: "Sie wollen das Objekt löschen.\nSind Sie sicher?" }, 
             method: :delete,
             title:  options.fetch('title', title(obj) + " löschen"),
-            class:  options.fetch('css', 'btn btn-danger')
+            class:  options.fetch('class', 'btn btn-danger')
         end
       end
 
