@@ -2,6 +2,7 @@ de:
   activerecord:
     models:
       post: Posting
+      blog: Blog
 
   attributes:
     subject: Betreff
@@ -12,3 +13,4 @@ de:
   controller:
     home: Home
     posts: Postings
+    blogs: Blogs
