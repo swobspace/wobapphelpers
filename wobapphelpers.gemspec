@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency "responders"
-  s.add_development_dependency "rails", "~> 4.1.0"
+  s.add_development_dependency "rails", "~> 4.1.8"
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'jquery-rails'
   s.add_development_dependency "bootstrap-sass"
