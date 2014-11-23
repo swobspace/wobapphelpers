@@ -6,3 +6,4 @@ en:
     controller:
       new:  "create %{name}"
       edit:  "update %{name}"
+      update:  "update %{name}"
