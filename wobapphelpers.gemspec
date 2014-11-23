@@ -20,12 +20,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency "responders"
   s.add_development_dependency "rails", "~> 4.1.0"
-  s.add_development_dependency 'sass-rails', '~> 4.0.3'
+  s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'jquery-rails'
-  s.add_development_dependency "bootstrap-sass", "~> 3.1.1"
+  s.add_development_dependency "bootstrap-sass"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"
-  s.add_development_dependency "cancancan", '~> 1.7.1'
+  s.add_development_dependency "cancancan", '~> 1.7'
   s.add_development_dependency "shoulda-context"
   s.add_development_dependency "mocha"
   # -- see Gemfile until version 3.1 is released
