@@ -46,9 +46,12 @@ module Wobapphelpers
         parent, obj = nesting_stuff(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
+          verify = options.has_key?(:verify) ? { verify: options.fetch(:verify) } : {}
           link_to icon_delete, poly, 
             remote: options.fetch(:remote, false),
-            data: { confirm: options.fetch(:confirm, "Sie wollen das Objekt löschen.\nSind Sie sicher?") },
+            data: {
+              confirm: options.fetch(:confirm, "Sie wollen das Objekt löschen.\nSind Sie sicher?")
+            }.merge(verify),
             method: :delete,
             title:  options.fetch(:title, title(obj) + " löschen"),
             class:  options.fetch(:class, 'btn btn-danger')
