@@ -48,7 +48,7 @@ module Wobapphelpers
           options.symbolize_keys!
           link_to icon_delete, poly, 
             remote: options.fetch(:remote, false),
-            data: { confirm: "Sie wollen das Objekt löschen.\nSind Sie sicher?" }, 
+            data: { confirm: options.fetch(:confirm, "Sie wollen das Objekt löschen.\nSind Sie sicher?") },
             method: :delete,
             title:  options.fetch(:title, title(obj) + " löschen"),
             class:  options.fetch(:class, 'btn btn-danger')
