@@ -25,9 +25,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "bootstrap-sass"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"
-  s.add_development_dependency "cancancan", '~> 1.7'
+  s.add_development_dependency "cancancan", '~> 1.9'
   s.add_development_dependency "shoulda-context"
   s.add_development_dependency "mocha"
-  # -- see Gemfile until version 3.1 is released
-  # s.add_development_dependency 'simple_form', '>= 3.1'
+  s.add_development_dependency 'simple_form'
 end
