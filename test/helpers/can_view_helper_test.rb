@@ -35,14 +35,20 @@ class CanViewHelperTest < ActionController::TestCase
     should "not render show link" do
       get :index
       assert_select "a.btn.btn-default" do
-	assert_select "[href=?]", /\/posts\/\d+/, title: "Posting anzeigen", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
+                       title: "Posting anzeigen", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
+                       title: "Posting anzeigen", count: 0
       end
     end
 
     should "not render edit link" do
       get :index
       assert_select "a.btn.btn-default" do
-	assert_select "[href=?]", /\/posts\/\d+\/edit/, title: "Posting bearbeiten", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).first.id}/edit']",  
+                       title: "Posting bearbeiten", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).last.id}/edit']",  
+                       title: "Posting bearbeiten", count: 0
       end
     end
     should "not render delete link" do
@@ -59,7 +65,10 @@ class CanViewHelperTest < ActionController::TestCase
     should "render show link" do
       get :index
       assert_select "a.btn.btn-default" do
-	assert_select "[href=?]", /\/posts\/.+/,  title: "Posting anzeigen", count: 2 
+	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
+                       title: "Posting anzeigen"
+	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
+                       title: "Posting anzeigen"
       end
     end
 
@@ -72,7 +81,10 @@ class CanViewHelperTest < ActionController::TestCase
     should "not render edit link" do
       get :index
       assert_select "a.btn.btn-default" do
-	assert_select "[href=?]", /\/posts\/\d+\/edit/, title: "Posting bearbeiten", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).first.id}/edit']",  
+                       title: "Posting bearbeiten", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).last.id}/edit']",  
+                       title: "Posting bearbeiten", count: 0
       end
     end
     should "not render delete link" do
@@ -89,7 +101,10 @@ class CanViewHelperTest < ActionController::TestCase
     should "not render show link" do
       get :index
       assert_select "a.btn.btn-default" do
-	assert_select "[href=?]", /\/posts\/\d+/,  title: "Posting anzeigen", count: 0 
+	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
+                       title: "Posting anzeigen", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
+                       title: "Posting anzeigen", count: 0
       end
     end
 
@@ -102,7 +117,10 @@ class CanViewHelperTest < ActionController::TestCase
     should "render edit link" do
       get :index
       assert_select "a.btn.btn-default" do
-	assert_select "[href=?]", /\/posts\/\d+\/edit/, title: "Posting bearbeiten", count: 2
+	assert_select "[href='/posts/#{assigns(:posts).first.id}/edit']",  
+                       title: "Posting bearbeiten"
+	assert_select "[href='/posts/#{assigns(:posts).last.id}/edit']",  
+                       title: "Posting bearbeiten"
       end
     end
     should "not render delete link" do
@@ -119,7 +137,10 @@ class CanViewHelperTest < ActionController::TestCase
     should "not render show link" do
       get :index
       assert_select "a.btn.btn-default" do
-	assert_select "[href=?]", /\/posts\/.+/,  title: "Posting anzeigen", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
+                       title: "Posting anzeigen", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
+                       title: "Posting anzeigen", count: 0
       end
     end
 
@@ -132,13 +153,19 @@ class CanViewHelperTest < ActionController::TestCase
     should "not render edit link" do
       get :index
       assert_select "a.btn.btn-default" do
-	assert_select "[href=?]", /\/posts\/\d+\/edit/, title: "Posting bearbeiten", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).first.id}/edit']",  
+                       title: "Posting bearbeiten", count: 0
+	assert_select "[href='/posts/#{assigns(:posts).last.id}/edit']",  
+                       title: "Posting bearbeiten", count: 0
       end
     end
     should "render delete link" do
       get :index
       assert_select "a.btn.btn-danger" do
-	assert_select "[href=?]", /\/posts\/\d+/, title: "Posting löschen", count: 2
+	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
+                       title: "Posting bearbeiten", count: 1
+	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
+                       title: "Posting bearbeiten", count: 1
       end
     end
   end
