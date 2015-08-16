@@ -113,12 +113,12 @@ module Wobapphelpers
       private
 
       def nesting_stuff(poly)
-	if poly.is_a? Array
-	  obj = poly.pop
+        mypoly = poly
+	if mypoly.is_a? Array
+	  return poly[0..-2], poly[-1]
 	else
-	  obj = poly
+	  return poly, poly
 	end
-	return poly, obj
       end
 
       def title(obj)
