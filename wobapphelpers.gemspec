@@ -19,13 +19,13 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency "responders"
-  s.add_development_dependency "rails", "~> 4.1"
+  s.add_development_dependency "rails", ">= 4.1"
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'jquery-rails'
   s.add_development_dependency "bootstrap-sass"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"
-  s.add_development_dependency "cancancan", '~> 1.9'
+  s.add_development_dependency "cancancan", '~> 1.10'
   s.add_development_dependency "shoulda-context"
   s.add_development_dependency "mocha"
   s.add_development_dependency 'simple_form'
