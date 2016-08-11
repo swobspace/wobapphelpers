@@ -19,10 +19,12 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency "responders"
-  s.add_development_dependency "rails", ">= 4.1"
-  s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'jquery-rails'
-  s.add_development_dependency "bootstrap-sass"
+  s.add_dependency "rails", "~> 4.1"
+  s.add_dependency 'sass-rails'
+  s.add_dependency 'coffee-rails'
+  s.add_dependency 'jquery-rails'
+
+  s.add_development_dependency 'bower-rails', '~> 0.10.0'
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"
   s.add_development_dependency "cancancan", '~> 1.10'

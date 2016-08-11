@@ -14,3 +14,4 @@ gemspec
 # gem 'debugger'
 
 gem 'simple_form'
+gem 'bower-rails', '~> 0.10.0'
