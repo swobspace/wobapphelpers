@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Wobapphelpers::Breadcrumbs
-  before_filter :add_breadcrumb_index, only: [:index]
+  before_action :add_breadcrumb_index, only: [:index]
 
   self.responder = Wobapphelpers::Responders
 

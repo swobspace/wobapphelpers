@@ -15,3 +15,4 @@ gemspec
 
 gem 'simple_form'
 gem 'bower-rails', '~> 0.10.0'
+gem 'record_tag_helper', '~> 1.0' 

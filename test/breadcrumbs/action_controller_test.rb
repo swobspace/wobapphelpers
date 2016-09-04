@@ -14,9 +14,9 @@ class ActionControllerTest < ActionController::TestCase
   end
 
   should "add breadcrumb only for #show" do
-    post(:create, post: {subject: 'just a dummy'})
+    post:create, params: { post: {subject: 'just a dummy'}}
     post_id = assigns(:post).to_param
-    get :show, id: post_id
+    get :show, params: { id: post_id }
     assert_not session[:breadcrumbs].nil?
     assert_equal 1, session[:breadcrumbs].size
     assert_match "Posting(#{post_id}", session[:breadcrumbs].last[0]
@@ -32,9 +32,9 @@ class ActionControllerTest < ActionController::TestCase
 
   should "add breadcrumbs for posts#index and posts#show" do
     get :index
-    post(:create, post: {subject: 'just a dummy'})
+    post :create, params: { post: {subject: 'just a dummy'} }
     post_id = assigns(:post).to_param
-    get :show, id: post_id
+    get :show, params: { id: post_id }
     assert_equal 2, session[:breadcrumbs].size
     assert_match "Postings", session[:breadcrumbs].first[0]
     assert_match "/posts", session[:breadcrumbs].first[1]

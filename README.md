@@ -3,23 +3,21 @@ wobapphelpers
 
 Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap. 
 
+This is the ''master'' branch, for use with rails 5.0. For Rails 4.x please checkout
+''branch 1-0-stable''.
+
 Requirements
 ------------
-* rails >= 4.1
-* ruby >= 2.0
+* rails >= 5.0
+* ruby >= 2.2
 * bootstrap v3; must be included by by yourself (via gem or manually)
-* simple_form >= 3.1
+* simple_form ~> 3.3
 
 
 Installation
 ------------
 
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "master"
-
-and may be
-
-    gem 'bootstrap-sass', '~> 3.1.1'
-    gem 'simple_form', '~> 3.1'
 
 Generators
 ----------
@@ -147,7 +145,7 @@ other variable names you have to use :add_breadcrumbs_for, i.e.
 Licence
 -------
 
-Wobapphelpers Copyright (C) 2014-2015  Wolfgang Barth
+Wobapphelpers Copyright (C) 2014-2016  Wolfgang Barth
 
 MIT License, see [LICENSE](LICENSE)
 

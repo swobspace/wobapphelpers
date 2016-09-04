@@ -14,7 +14,7 @@ class FormLegendTest < ActionController::TestCase
   end
 
   should "render group specific update form title" do
-    get :edit, id: @p1
+    get :edit, params: { id: @p1 }
     assert_select "legend", text: "Post/edit"
   end
 

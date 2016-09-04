@@ -19,7 +19,7 @@ class BreadcrumbHelperHelperTest < ActionDispatch::IntegrationTest
     get home_path
     get posts_path
     # as long as :back is not used, the test should succeed 
-    get home_path, {}, {'HTTP_REFERER' => 'http://example.org'}
+    get home_path, headers: {'HTTP_REFERER' => 'http://example.org'}
     get posts_path
     assert_select "[class=?]", "btn btn-default" do
       assert_select "[href='/home?bci=2']", text: /.*Zurück/
@@ -27,7 +27,7 @@ class BreadcrumbHelperHelperTest < ActionDispatch::IntegrationTest
   end
 
   should "show back_link :back" do
-    get home_path, {}, {'HTTP_REFERER' => 'http://example.org'}
+    get home_path, headers: {'HTTP_REFERER' => 'http://example.org'}
     assert_select "[class=?]", "btn btn-default" do
       assert_select "[href='http://example.org']"
     end
