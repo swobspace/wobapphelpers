@@ -9,13 +9,14 @@ module Wobapphelpers
         raw(%Q[<legend class="col-sm-9 col-sm-offset-3">#{controlleraction}</legend>])
       end
 
-      def new_link(model, options = {})
-        if _can?(:create, model)
+      def new_link(poly, options = {})
+        parent, obj = nesting_stuff(poly)
+        if _can?(:create, obj)
           options.symbolize_keys!
-          link_to model.model_name.human + " erstellen",
-            new_polymorphic_path(model, options),
+          link_to obj.model_name.human + " erstellen",
+            new_polymorphic_path(poly),
             remote: options.fetch(:remote, false),
-            title: options.fetch(:title, title(model) + " hinzufügen"),
+            title: options.fetch(:title, title(obj) + " hinzufügen"),
             class: options.fetch(:class, 'btn btn-default')
         end
       end

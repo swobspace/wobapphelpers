@@ -28,3 +28,15 @@
 
 <%= new_link(Blog) %>
 <%= new_link(Post) %>
+
+<hr>
+<h2> Check for polymorphic variants like [engine, Blog] </h2>
+
+<%= new_link([nil, Post]) %>
+<%= edit_link([nil, Post.first]) %>
+<%= delete_link([nil, Post.first]) %>
+
+<hr>
+<p>
+last words ...
+</p>
