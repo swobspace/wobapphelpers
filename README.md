@@ -26,7 +26,7 @@ Generators
 
 wobapphelpers comes with some generators to install templates and so on:
 
-  * rails g wobapphelpers:init : installs some locales 
+  * rails g wobapphelpers:install : installs some locales 
   * rails g wobapphelpers:scaffold_templates : installs scaffold erb and templates 
 and a controller template using simple_form and bootstrap, responders and the 
 famous respond_with method.
