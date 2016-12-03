@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_dependency "responders"
-  s.add_dependency "rails", ">= 3.2, < 5.0.0"
+  s.add_dependency "rails", ">= 3.2", "< 5.0.0"
   s.add_dependency 'sass-rails'
   s.add_dependency 'coffee-rails'
   s.add_dependency 'jquery-rails'
