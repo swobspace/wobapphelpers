@@ -10,12 +10,20 @@ class FormLegendTest < ActionController::TestCase
 
   should "render group specific new form title" do
     get :new
-    assert_select "legend", text: "Post/new"
+    assert_select "div.row" do
+      assert_select "div" do
+        assert_select "legend", text: "Post/new"
+      end
+    end
   end
 
   should "render group specific update form title" do
     get :edit, id: @p1
-    assert_select "legend", text: "Post/edit"
+    assert_select "div.row" do
+      assert_select "div" do
+        assert_select "legend", text: "Post/edit"
+      end
+    end
   end
 
 end
