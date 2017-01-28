@@ -5,7 +5,7 @@ Rails helpers and more shared between common wob rails applications. Depends on 
 
 Requirements
 ------------
-* rails >= 4.1
+* rails >= 4.1, < 5.0
 * ruby >= 2.0
 * bootstrap v3; must be included by by yourself (via gem or manually)
 * simple_form >= 3.1
@@ -14,7 +14,7 @@ Requirements
 Installation
 ------------
 
-    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "master"
+    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "1-0-stable"
 
 and may be
 
