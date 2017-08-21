@@ -6,7 +6,13 @@ module Wobapphelpers
       include Wobapphelpers::Breadcrumbs::BreadcrumbsHelper
 
       def form_legend
-        raw(%Q[<legend class="col-sm-9 col-sm-offset-3">#{controlleraction}</legend>])
+        raw(
+         %Q[<div class="row">] +
+         %Q[<div class="col-sm-9 col-sm-offset-3 col-md-offset-2 col-md-offset-2">] +
+         %Q[<legend>#{controlleraction}</legend>] +
+         %Q[</div>] +
+         %Q[</div>]
+        )
       end
 
       def new_link(poly, options = {})
