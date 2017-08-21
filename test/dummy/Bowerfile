@@ -1,5 +1,0 @@
-# bowerfile for wobapphelpers/test/dummy application
-
-asset 'jquery', '~> 2'
-asset 'bootstrap-sass', '~> 3.3'
-
