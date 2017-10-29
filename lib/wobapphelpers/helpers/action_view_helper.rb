@@ -23,7 +23,7 @@ module Wobapphelpers
             new_polymorphic_path(poly),
             remote: options.fetch(:remote, false),
             title: options.fetch(:title, title(obj) + " hinzufügen"),
-            class: options.fetch(:class, 'btn btn-default')
+            class: options.fetch(:class, 'btn btn-secondary')
         end
       end
 
@@ -34,7 +34,7 @@ module Wobapphelpers
           link_to icon_show, polymorphic_path(poly), 
             remote: options.fetch(:remote, false),
             title:  options.fetch(:title, title(obj) + " anzeigen"),
-            class:  options.fetch(:class, 'btn btn-default')
+            class:  options.fetch(:class, 'btn btn-secondary')
         end
       end
 
@@ -45,7 +45,7 @@ module Wobapphelpers
           link_to icon_edit, edit_polymorphic_path(poly), 
             remote: options.fetch(:remote, false),
             title:  options.fetch(:title, title(obj) + " bearbeiten"),
-            class:  options.fetch(:class, 'btn btn-default')
+            class:  options.fetch(:class, 'btn btn-secondary')
         end
       end
 
@@ -76,16 +76,16 @@ module Wobapphelpers
 	    idx   =  session[:breadcrumbs].size - 2
 	    title = bc[0]
 	    goto  = bc[1]
-	    breadcrumb_idx(label, goto, idx, 'btn btn-default')
+	    breadcrumb_idx(label, goto, idx, 'btn btn-secondary')
 	  else
-	    link_to label, url_for(:back), :class => 'btn btn-default'
+	    link_to label, url_for(:back), :class => 'btn btn-secondary'
 	  end
         end
       end
 
       def cancel_button
         link_to icon_cancel + " " + t('wobapphelpers.helpers.cancel'), 
-          url_for(:back), :class => 'btn btn-default'
+          url_for(:back), :class => 'btn btn-secondary'
       end
 
       def show_flash
