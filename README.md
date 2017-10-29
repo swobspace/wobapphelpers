@@ -3,20 +3,24 @@ wobapphelpers
 
 Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap. 
 
-This is the ''master'' branch, for use with rails 5.0. For Rails 4.x please checkout
-''branch 1-0-stable''.
+This is the ''master'' branch, for use with rails 5.1.
 
 Requirements
 ------------
-* rails >= 5.0
-* ruby >= 2.2
-* bootstrap v3; must be included by by yourself (via gem or manually)
-* simple_form ~> 3.3
 
+| branch     | rails | ruby   | bootstrap | icons       | 
+|------------|-------|--------|-----------|-------------|
+| master     | 5.1   | >= 2.3 | v4        | fontawesome |
+| 2-0-stable | 5.0   | >= 2.2 | v3        | glyphicons  |        
+| 1-0-stable | 4.2   | >= 2.0 | v3        | glyphicons  |
+
+* simple_form >= 3.3
 
 Installation
 ------------
 
+    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "2-0-stable"
+    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "1-0-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "master"
 
 Generators
@@ -145,10 +149,7 @@ other variable names you have to use :add_breadcrumbs_for, i.e.
 Licence
 -------
 
-Wobapphelpers Copyright (C) 2014-2016  Wolfgang Barth
+Wobapphelpers Copyright (C) 2014-2017  Wolfgang Barth
 
 MIT License, see [LICENSE](LICENSE)
 
-This plugin makes use of use of the famous Glyphicon Halflings set which is
-include in bootstrap for free of cost. You find more information about
-Glyphicon at http://glyphicons.com/
