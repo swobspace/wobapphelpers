@@ -5,28 +5,28 @@ module Wobapphelpers
         attachment: 'file',
         back:       'arrow-left',
         calendar:   'calendar',
-        cancel:     'remove',
+        cancel:     'trash',
         closed:     'lock',
-        copy:       'edit',
+        copy:       'clone',
         delete:     'trash',
         document:   'file',
         download:   'download',
         edit:       'pencil',
-        help:       'question-sign',
-        info:       'info-sign',
+        help:       'question',
+        info:       'info',
         left:       'arrow-left',
         new:        'plus',
-        ok:         'ok',
+        ok:         'check',
         open:       'folder-open',
         print:      'print',
         right:      'arrow-right',
-        show:       'eye-open',
+        show:       'eye',
         star:       'star',
         up:         'arrow-up',
       }
       
       def icon(what)
-        raw(%Q[<span class="glyphicon glyphicon-#{what}"></span>])
+        raw(%Q[<i class="fa fa-#{what} fa-fw" aria-hidden="true"></i>])
       end
 
       PREDEFINED_ICONS.each do |key,value| 
