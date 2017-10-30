@@ -16,11 +16,11 @@ module Wobapphelpers
       end
 
       def new_link(poly, options = {})
-        parent, obj = nesting_stuff(poly)
+        mypoly, obj = get_object(poly)
         if _can?(:create, obj)
           options.symbolize_keys!
           link_to obj.model_name.human + " erstellen",
-            new_polymorphic_path(poly),
+            new_polymorphic_path(mypoly),
             remote: options.fetch(:remote, false),
             title: options.fetch(:title, title(obj) + " hinzufügen"),
             class: options.fetch(:class, 'btn btn-secondary')
@@ -28,10 +28,10 @@ module Wobapphelpers
       end
 
       def show_link(poly, options = {})
-        parent, obj = nesting_stuff(poly)
+        mypoly, obj = get_object(poly)
         if _can?(:read, obj)
           options.symbolize_keys!
-          link_to icon_show, polymorphic_path(poly), 
+          link_to icon_show, polymorphic_path(mypoly),
             remote: options.fetch(:remote, false),
             title:  options.fetch(:title, title(obj) + " anzeigen"),
             class:  options.fetch(:class, 'btn btn-secondary')
@@ -39,10 +39,10 @@ module Wobapphelpers
       end
 
       def edit_link(poly, options = {})
-        parent, obj = nesting_stuff(poly)
+        mypoly, obj = get_object(poly)
         if _can?(:edit, obj)
           options.symbolize_keys!
-          link_to icon_edit, edit_polymorphic_path(poly), 
+          link_to icon_edit, edit_polymorphic_path(mypoly),
             remote: options.fetch(:remote, false),
             title:  options.fetch(:title, title(obj) + " bearbeiten"),
             class:  options.fetch(:class, 'btn btn-secondary')
@@ -50,11 +50,11 @@ module Wobapphelpers
       end
 
       def delete_link(poly, options = {})
-        parent, obj = nesting_stuff(poly)
+        mypoly, obj = get_object(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
           verify = options.has_key?(:verify) ? { verify: options.fetch(:verify) } : {}
-          link_to icon_delete, poly, 
+          link_to icon_delete, mypoly,
             remote: options.fetch(:remote, false),
             data: {
               confirm: options.fetch(:confirm, "Sie wollen das Objekt löschen.\nSind Sie sicher?")
@@ -84,7 +84,7 @@ module Wobapphelpers
       end
 
       def cancel_button
-        link_to icon_cancel + " " + t('wobapphelpers.helpers.cancel'), 
+        link_to icon_cancel + " " + t('wobapphelpers.helpers.cancel'),
           url_for(:back), :class => 'btn btn-secondary'
       end
 
@@ -119,13 +119,18 @@ module Wobapphelpers
 
       private
 
-      def nesting_stuff(poly)
+      #
+      # returns poly, object
+      # mypoly: poly.compact! if is_a? Array
+      #
+      def get_object(poly)
         mypoly = poly
-	if mypoly.is_a? Array
-	  return poly[0..-2], poly[-1]
-	else
-	  return poly, poly
-	end
+	if mypoly.kind_of? Array
+          mypoly.compact!
+	  return mypoly, mypoly[-1]
+        else
+          return mypoly, mypoly
+        end
       end
 
       def title(obj)
@@ -142,7 +147,7 @@ module Wobapphelpers
         namespace     = controller.controller_path
         resource_name = t("activerecord.models.#{namespace.singularize}")
         search_for    = [namespace, action].join(".").to_sym
-        t(search_for, scope: "wobapphelpers.controller".to_sym, 
+        t(search_for, scope: "wobapphelpers.controller".to_sym,
           default: action.to_sym, name: resource_name)
       end
 
@@ -152,7 +157,7 @@ module Wobapphelpers
         can? action, obj
       end
 
-      def _normalize(model) 
+      def _normalize(model)
         if Wobapphelpers.cancan == :cancan2
           model.model_name.downcase.pluralize.to_sym
         else
