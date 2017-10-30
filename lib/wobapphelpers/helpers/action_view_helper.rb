@@ -16,7 +16,7 @@ module Wobapphelpers
       end
 
       def new_link(poly, options = {})
-        mypoly, obj = get_object(poly)
+        mypoly, obj = get_parts(poly)
         if _can?(:create, obj)
           options.symbolize_keys!
           link_to obj.model_name.human + " erstellen",
@@ -28,7 +28,7 @@ module Wobapphelpers
       end
 
       def show_link(poly, options = {})
-        mypoly, obj = get_object(poly)
+        mypoly, obj = get_parts(poly)
         if _can?(:read, obj)
           options.symbolize_keys!
           link_to icon_show, polymorphic_path(mypoly),
@@ -39,7 +39,7 @@ module Wobapphelpers
       end
 
       def edit_link(poly, options = {})
-        mypoly, obj = get_object(poly)
+        mypoly, obj = get_parts(poly)
         if _can?(:edit, obj)
           options.symbolize_keys!
           link_to icon_edit, edit_polymorphic_path(mypoly),
@@ -50,7 +50,7 @@ module Wobapphelpers
       end
 
       def delete_link(poly, options = {})
-        mypoly, obj = get_object(poly)
+        mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
           verify = options.has_key?(:verify) ? { verify: options.fetch(:verify) } : {}
@@ -123,13 +123,12 @@ module Wobapphelpers
       # returns poly, object
       # mypoly: poly.compact! if is_a? Array
       #
-      def get_object(poly)
-        mypoly = poly
-	if mypoly.kind_of? Array
-          mypoly.compact!
-	  return mypoly, mypoly[-1]
+      def get_parts(poly)
+	if poly.kind_of? Array
+          mypoly = poly.compact
+	  [mypoly, mypoly[-1]]
         else
-          return mypoly, mypoly
+          [poly, poly]
         end
       end
 
