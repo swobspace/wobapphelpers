@@ -11,7 +11,7 @@ class HelperDeliveryTest < ActionDispatch::IntegrationTest
     get home_path
     assert_response :success
     Wobapphelpers::Helpers::IconHelper::PREDEFINED_ICONS.each do |key,value|
-      assert_match "<span class=\"glyphicon glyphicon-#{value}\"></span>", response.body
+      assert_match "<i class=\"fa fa-#{value} fa-fw\" aria-hidden=\"true\"></i>", response.body
     end
   end
 

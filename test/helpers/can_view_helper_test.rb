@@ -27,14 +27,14 @@ class CanViewHelperTest < ActionController::TestCase
 
     should "render new link" do
       get :index
-      assert_select "a.btn.btn-default", { 
+      assert_select "a.btn.btn-secondary", { 
 	href: "/posts/new", text: "Posting erstellen", count: 1 
       }
     end
 
     should "not render show link" do
       get :index
-      assert_select "a.btn.btn-default" do
+      assert_select "a.btn.btn-secondary" do
 	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
                        title: "Posting anzeigen", count: 0
 	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
@@ -44,7 +44,7 @@ class CanViewHelperTest < ActionController::TestCase
 
     should "not render edit link" do
       get :index
-      assert_select "a.btn.btn-default" do
+      assert_select "a.btn.btn-secondary" do
 	assert_select "[href='/posts/#{assigns(:posts).first.id}/edit']",  
                        title: "Posting bearbeiten", count: 0
 	assert_select "[href='/posts/#{assigns(:posts).last.id}/edit']",  
@@ -64,7 +64,7 @@ class CanViewHelperTest < ActionController::TestCase
 
     should "render show link" do
       get :index
-      assert_select "a.btn.btn-default" do
+      assert_select "a.btn.btn-secondary" do
 	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
                        title: "Posting anzeigen"
 	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
@@ -74,13 +74,13 @@ class CanViewHelperTest < ActionController::TestCase
 
     should "not render create link" do
       get :index
-      assert_select "a.btn.btn-default", { 
+      assert_select "a.btn.btn-secondary", { 
 	href: "/posts/new", text: "Posting erstellen", count: 0
       }
     end
     should "not render edit link" do
       get :index
-      assert_select "a.btn.btn-default" do
+      assert_select "a.btn.btn-secondary" do
 	assert_select "[href='/posts/#{assigns(:posts).first.id}/edit']",  
                        title: "Posting bearbeiten", count: 0
 	assert_select "[href='/posts/#{assigns(:posts).last.id}/edit']",  
@@ -100,7 +100,7 @@ class CanViewHelperTest < ActionController::TestCase
 
     should "not render show link" do
       get :index
-      assert_select "a.btn.btn-default" do
+      assert_select "a.btn.btn-secondary" do
 	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
                        title: "Posting anzeigen", count: 0
 	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
@@ -110,13 +110,13 @@ class CanViewHelperTest < ActionController::TestCase
 
     should "not render create link" do
       get :index
-      assert_select "a.btn.btn-default", { 
+      assert_select "a.btn.btn-secondary", { 
 	href: "/posts/new", text: "Posting erstellen", count: 0
       }
     end
     should "render edit link" do
       get :index
-      assert_select "a.btn.btn-default" do
+      assert_select "a.btn.btn-secondary" do
 	assert_select "[href='/posts/#{assigns(:posts).first.id}/edit']",  
                        title: "Posting bearbeiten"
 	assert_select "[href='/posts/#{assigns(:posts).last.id}/edit']",  
@@ -136,7 +136,7 @@ class CanViewHelperTest < ActionController::TestCase
 
     should "not render show link" do
       get :index
-      assert_select "a.btn.btn-default" do
+      assert_select "a.btn.btn-secondary" do
 	assert_select "[href='/posts/#{assigns(:posts).first.id}']",  
                        title: "Posting anzeigen", count: 0
 	assert_select "[href='/posts/#{assigns(:posts).last.id}']",  
@@ -146,13 +146,13 @@ class CanViewHelperTest < ActionController::TestCase
 
     should "not render create link" do
       get :index
-      assert_select "a.btn.btn-default", { 
+      assert_select "a.btn.btn-secondary", { 
 	href: "/posts/new", text: "Posting erstellen", count: 0
       }
     end
     should "not render edit link" do
       get :index
-      assert_select "a.btn.btn-default" do
+      assert_select "a.btn.btn-secondary" do
 	assert_select "[href='/posts/#{assigns(:posts).first.id}/edit']",  
                        title: "Posting bearbeiten", count: 0
 	assert_select "[href='/posts/#{assigns(:posts).last.id}/edit']",  
