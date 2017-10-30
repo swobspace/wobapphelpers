@@ -8,7 +8,7 @@ module Wobapphelpers
       def form_legend
         raw(
          %Q[<div class="row">] +
-         %Q[<div class="col-sm-9 col-sm-offset-3 col-md-offset-2 col-md-offset-2">] +
+         %Q[<div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2">] +
          %Q[<legend>#{controlleraction}</legend>] +
          %Q[</div>] +
          %Q[</div>]
@@ -103,8 +103,10 @@ module Wobapphelpers
 	  else
 	    my_class = severity.to_s
 	  end
-	  msg += %Q[<div id="#{severity.to_s}" class="#{my_class} alert-dismissable fade in noprint">]
-	  msg += %Q[<button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>]
+	  msg += %Q[<div id="#{severity.to_s}" class="#{my_class} alert-dismissable fade show noprint" role="alert">]
+	  msg += %Q[<button type="button" class="close" data-dismiss="alert" aria-label="Clse">]
+          msg += %Q[<span aria-hidden="true">&times;</span>]
+	  msg += %Q[</button>]
 	  msg += flash[severity]
 	  msg += %Q[</div>]
 	end
