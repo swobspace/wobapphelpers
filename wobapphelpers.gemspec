@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'record_tag_helper', '~> 1.0'
+  s.add_dependency 'font-awesome-sass'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"
@@ -32,5 +33,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency "mocha"
   s.add_development_dependency 'simple_form'
   s.add_development_dependency 'rails-controller-testing'
-  s.add_development_dependency 'font-awesome-sass'
 end
