@@ -1,0 +1,48 @@
+= Migration from Bootstrap Glyphicons to Fontawesome
+
+[options="header"]
+|===
+|glyphicon b2   |fontawesome
+|pencil         |pencil
+|edit		|clone
+|plus           |plus
+|trash		|trash-o		
+|minus		|minus
+|cog		|cog
+|question	|question
+|arrow-left	|arrow-left
+|arrow-right	|arrow-right
+|arrow-up	|arrow-up
+|calendar	|calendar
+|file		|file
+|backward	|backward
+|forward	|forward
+|search		|search
+|leaf		|leaf
+|user		|user
+|remove		|trash
+|step-backward	|step-backward
+|download-alt	|download
+|print		|print
+|zoom-in	|search-plus
+|show		|eye
+|lock		|lock
+|===
+
+.glyphicon bootstrap2
+[ruby]
+----
+<i class="icon-*"">
+----
+
+.glyphicon bootstrap3
+[ruby]
+----
+<span class="glyphicon glyphicon-*" aria-hidden="true">
+----
+
+.fontawesome
+[ruby]
+----
+<i class="fa fa-*"" aria-hidden="true">
+----

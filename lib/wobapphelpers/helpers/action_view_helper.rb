@@ -8,7 +8,7 @@ module Wobapphelpers
       def form_legend
         raw(
          %Q[<div class="row">] +
-         %Q[<div class="col-sm-9 col-sm-offset-3 col-md-offset-2 col-md-offset-2">] +
+         %Q[<div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2">] +
          %Q[<legend>#{controlleraction}</legend>] +
          %Q[</div>] +
          %Q[</div>]
@@ -16,45 +16,45 @@ module Wobapphelpers
       end
 
       def new_link(poly, options = {})
-        parent, obj = nesting_stuff(poly)
+        mypoly, obj = get_parts(poly)
         if _can?(:create, obj)
           options.symbolize_keys!
           link_to obj.model_name.human + " erstellen",
-            new_polymorphic_path(poly),
+            new_polymorphic_path(mypoly),
             remote: options.fetch(:remote, false),
             title: options.fetch(:title, title(obj) + " hinzufügen"),
-            class: options.fetch(:class, 'btn btn-default')
+            class: options.fetch(:class, 'btn btn-secondary')
         end
       end
 
       def show_link(poly, options = {})
-        parent, obj = nesting_stuff(poly)
+        mypoly, obj = get_parts(poly)
         if _can?(:read, obj)
           options.symbolize_keys!
-          link_to icon_show, polymorphic_path(poly), 
+          link_to icon_show, polymorphic_path(mypoly),
             remote: options.fetch(:remote, false),
             title:  options.fetch(:title, title(obj) + " anzeigen"),
-            class:  options.fetch(:class, 'btn btn-default')
+            class:  options.fetch(:class, 'btn btn-secondary')
         end
       end
 
       def edit_link(poly, options = {})
-        parent, obj = nesting_stuff(poly)
+        mypoly, obj = get_parts(poly)
         if _can?(:edit, obj)
           options.symbolize_keys!
-          link_to icon_edit, edit_polymorphic_path(poly), 
+          link_to icon_edit, edit_polymorphic_path(mypoly),
             remote: options.fetch(:remote, false),
             title:  options.fetch(:title, title(obj) + " bearbeiten"),
-            class:  options.fetch(:class, 'btn btn-default')
+            class:  options.fetch(:class, 'btn btn-secondary')
         end
       end
 
       def delete_link(poly, options = {})
-        parent, obj = nesting_stuff(poly)
+        mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
           verify = options.has_key?(:verify) ? { verify: options.fetch(:verify) } : {}
-          link_to icon_delete, poly, 
+          link_to icon_delete, mypoly,
             remote: options.fetch(:remote, false),
             data: {
               confirm: options.fetch(:confirm, "Sie wollen das Objekt löschen.\nSind Sie sicher?")
@@ -76,16 +76,16 @@ module Wobapphelpers
 	    idx   =  session[:breadcrumbs].size - 2
 	    title = bc[0]
 	    goto  = bc[1]
-	    breadcrumb_idx(label, goto, idx, 'btn btn-default')
+	    breadcrumb_idx(label, goto, idx, 'btn btn-secondary')
 	  else
-	    link_to label, url_for(:back), :class => 'btn btn-default'
+	    link_to label, url_for(:back), :class => 'btn btn-secondary'
 	  end
         end
       end
 
       def cancel_button
-        link_to icon_cancel + " " + t('wobapphelpers.helpers.cancel'), 
-          url_for(:back), :class => 'btn btn-default'
+        link_to icon_cancel + " " + t('wobapphelpers.helpers.cancel'),
+          url_for(:back), :class => 'btn btn-secondary'
       end
 
       def show_flash
@@ -103,8 +103,10 @@ module Wobapphelpers
 	  else
 	    my_class = severity.to_s
 	  end
-	  msg += %Q[<div id="#{severity.to_s}" class="#{my_class} alert-dismissable fade in noprint">]
-	  msg += %Q[<button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>]
+	  msg += %Q[<div id="#{severity.to_s}" class="#{my_class} alert-dismissable fade show noprint" role="alert">]
+	  msg += %Q[<button type="button" class="close" data-dismiss="alert" aria-label="Clse">]
+          msg += %Q[<span aria-hidden="true">&times;</span>]
+	  msg += %Q[</button>]
 	  msg += flash[severity]
 	  msg += %Q[</div>]
 	end
@@ -119,13 +121,17 @@ module Wobapphelpers
 
       private
 
-      def nesting_stuff(poly)
-        mypoly = poly
-	if mypoly.is_a? Array
-	  return poly[0..-2], poly[-1]
-	else
-	  return poly, poly
-	end
+      #
+      # returns poly, object
+      # mypoly: poly.compact! if is_a? Array
+      #
+      def get_parts(poly)
+	if poly.kind_of? Array
+          mypoly = poly.compact
+	  [mypoly, mypoly[-1]]
+        else
+          [poly, poly]
+        end
       end
 
       def title(obj)
@@ -142,7 +148,7 @@ module Wobapphelpers
         namespace     = controller.controller_path
         resource_name = t("activerecord.models.#{namespace.singularize}")
         search_for    = [namespace, action].join(".").to_sym
-        t(search_for, scope: "wobapphelpers.controller".to_sym, 
+        t(search_for, scope: "wobapphelpers.controller".to_sym,
           default: action.to_sym, name: resource_name)
       end
 
@@ -152,7 +158,7 @@ module Wobapphelpers
         can? action, obj
       end
 
-      def _normalize(model) 
+      def _normalize(model)
         if Wobapphelpers.cancan == :cancan2
           model.model_name.downcase.pluralize.to_sym
         else

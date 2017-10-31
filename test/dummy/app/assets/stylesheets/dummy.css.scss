@@ -1,5 +1,10 @@
+//fontawesome
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+//bootstrap
 $icon-font-path: "bootstrap/dist/fonts/";
-@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap/dist/css/bootstrap.css";
 
 body {
   padding-top: 50px;

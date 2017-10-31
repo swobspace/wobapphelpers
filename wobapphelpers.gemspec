@@ -32,4 +32,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "mocha"
   s.add_development_dependency 'simple_form'
   s.add_development_dependency 'rails-controller-testing'
+  s.add_development_dependency 'font-awesome-sass'
 end

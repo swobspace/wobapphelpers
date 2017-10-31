@@ -15,3 +15,13 @@ gemspec
 
 gem 'simple_form'
 gem 'record_tag_helper', '~> 1.0' 
+gem 'font-awesome-sass'
+
+group :development do
+  gem "guard"
+  gem "guard-minitest"
+  gem 'guard-rails'
+  gem 'guard-livereload', require: false
+  gem 'guard-bundler'
+  gem 'puma'
+end
