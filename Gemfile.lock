@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    wobapphelpers (3.0.0.pre.beta.1)
+    wobapphelpers (3.0.0)
       coffee-rails
+      font-awesome-sass
       jquery-rails
       rails (~> 5.0)
       record_tag_helper (~> 1.0)
