@@ -13,11 +13,11 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
-gem 'simple_form'
-gem 'record_tag_helper', '~> 1.0' 
-gem 'font-awesome-sass'
 
-group :development do
+group :development, :test do
+  gem 'simple_form'
+  gem 'record_tag_helper', '~> 1.0' 
+  gem 'font-awesome-sass'
   gem "guard"
   gem "guard-minitest"
   gem 'guard-rails'
