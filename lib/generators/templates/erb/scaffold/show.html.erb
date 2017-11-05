@@ -1,5 +1,5 @@
 <table class="table table-bordered table-hover autowidth">
-<% attributes.each do |attribute| -%>
+<% attributes.each do |attribute| %>
   <tr>
     <th><%%= t('attributes.<%= attribute.name %>')%>:</th>
     <td><%%= @<%= singular_table_name %>.<%= attribute.name %> %></td>
