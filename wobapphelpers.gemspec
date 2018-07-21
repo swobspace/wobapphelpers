@@ -20,11 +20,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency "responders"
   s.add_dependency "rails", "~> 5.0"
-  s.add_dependency 'sass-rails'
+  s.add_dependency 'sassc-rails'
   s.add_dependency 'coffee-rails'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'record_tag_helper', '~> 1.0'
-  s.add_dependency 'font-awesome-sass'
+  s.add_dependency 'font-awesome-sass', '>=4.7', '<= 6'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"
