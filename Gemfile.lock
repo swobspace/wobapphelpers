@@ -197,6 +197,11 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     ruby_dep (1.5.0)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
@@ -246,10 +251,11 @@ DEPENDENCIES
   puma
   rails-controller-testing
   record_tag_helper (~> 1.0)
+  sass
   shoulda-context
   simple_form
   sqlite3
   wobapphelpers!
 
 BUNDLED WITH
-   1.17.2
+   2.0.2
