@@ -11,7 +11,7 @@ module Wobapphelpers
         delete:     'trash',
         document:   'file',
         download:   'download',
-        edit:       'pencil',
+        edit:       'pencil-alt',
         help:       'question',
         info:       'info',
         left:       'arrow-left',
@@ -26,7 +26,7 @@ module Wobapphelpers
       }
       
       def icon(what)
-        raw(%Q[<i class="fa fa-#{what} fa-fw" aria-hidden="true"></i>])
+        raw(%Q[<i class="fas fa-#{what} fa-fw" aria-hidden="true"></i>])
       end
 
       PREDEFINED_ICONS.each do |key,value| 

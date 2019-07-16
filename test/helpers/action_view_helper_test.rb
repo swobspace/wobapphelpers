@@ -32,7 +32,7 @@ class ActionViewHelperTest < ActionDispatch::IntegrationTest
       assert page.has_text?('Post/new')
       within('form') do
 	assert page.has_link?('Abbrechen'), "button submit not found"
-	assert find('a.btn.btn-secondary i.fa.fa-trash'), 
+	assert find('a.btn.btn-secondary i.fas.fa-trash'), 
 	       "button cancel not found"
      end
     end
