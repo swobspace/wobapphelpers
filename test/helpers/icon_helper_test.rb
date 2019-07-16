@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'sass'
 
 class IconHelperTest < ActionView::TestCase
   include Wobapphelpers::Helpers::IconHelper
