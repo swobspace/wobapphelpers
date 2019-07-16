@@ -3,11 +3,6 @@ module Wobapphelpers
     module ActionController
       def add_breadcrumb(name, url)
         breadcrumbs ||= (session[:breadcrumbs] || [] )
-        if params[:bci]
-          # this a back link of an existing breadcrumb entry,
-          # shorten the list
-          breadcrumbs = breadcrumbs.first(params[:bci].to_i)
-        end
         if breadcrumbs.size == 0 || url != breadcrumbs.last[1]
           breadcrumbs << [name, url]
         end

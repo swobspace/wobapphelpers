@@ -76,7 +76,7 @@ module Wobapphelpers
 	    idx   =  session[:breadcrumbs].size - 2
 	    title = bc[0]
 	    goto  = bc[1]
-	    breadcrumb_idx(label, goto, idx, 'btn btn-secondary')
+	    set_breadcrumb(label, goto, class: 'btn btn-secondary')
 	  else
 	    link_to label, url_for(:back), :class => 'btn btn-secondary'
 	  end

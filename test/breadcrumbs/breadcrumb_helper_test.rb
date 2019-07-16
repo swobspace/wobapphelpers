@@ -10,8 +10,8 @@ class BreadcrumbHelperHelperTest < ActionDispatch::IntegrationTest
     get home_path
     get posts_path
     assert_select "div#breadcrumbs" do
-      assert_select "[href='/home?bci=0']", title: "Home"
-      assert_select "[href='/posts?bci=1']", title: "Postings"
+      assert_select "[href='/home']", title: "Home"
+      assert_select "[href='/posts']", title: "Postings"
     end
   end
 
@@ -22,7 +22,7 @@ class BreadcrumbHelperHelperTest < ActionDispatch::IntegrationTest
     get home_path, headers: {'HTTP_REFERER' => 'http://example.org'}
     get posts_path
     assert_select "[class=?]", "btn btn-secondary" do
-      assert_select "[href='/home?bci=2']", text: /.*Zurück/
+      assert_select "[href='/home']", text: /.*Zurück/
     end
   end
 
