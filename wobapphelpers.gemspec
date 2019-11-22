@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_runtime_dependency 'sassc-rails'
-  s.add_runtime_dependency "rails", "~> 5.0"
+  s.add_runtime_dependency "rails", ">= 5.0"
   s.add_runtime_dependency 'coffee-rails'
   s.add_runtime_dependency 'jquery-rails'
   s.add_runtime_dependency 'record_tag_helper', '~> 1.0'
