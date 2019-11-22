@@ -20,10 +20,7 @@ module Wobapphelpers
         if _can?(:create, obj)
           options.symbolize_keys!
           link_to obj.model_name.human + " erstellen",
-            new_polymorphic_path(mypoly),
-            remote: options.fetch(:remote, false),
-            title: options.fetch(:title, title(obj) + " hinzufügen"),
-            class: options.fetch(:class, 'btn btn-secondary')
+            new_polymorphic_path(mypoly), default_options.merge(options)
         end
       end
 
@@ -31,10 +28,7 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:read, obj)
           options.symbolize_keys!
-          link_to icon_show, polymorphic_path(mypoly),
-            remote: options.fetch(:remote, false),
-            title:  options.fetch(:title, title(obj) + " anzeigen"),
-            class:  options.fetch(:class, 'btn btn-secondary')
+          link_to icon_show, polymorphic_path(mypoly), default_options.merge(options)
         end
       end
 
@@ -42,10 +36,7 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:edit, obj)
           options.symbolize_keys!
-          link_to icon_edit, edit_polymorphic_path(mypoly),
-            remote: options.fetch(:remote, false),
-            title:  options.fetch(:title, title(obj) + " bearbeiten"),
-            class:  options.fetch(:class, 'btn btn-secondary')
+          link_to icon_edit, edit_polymorphic_path(mypoly), default_options.merge(options)
         end
       end
 
@@ -53,15 +44,7 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          verify = options.has_key?(:verify) ? { verify: options.fetch(:verify) } : {}
-          link_to icon_delete, mypoly,
-            remote: options.fetch(:remote, false),
-            data: {
-              confirm: options.fetch(:confirm, "Sie wollen das Objekt löschen.\nSind Sie sicher?")
-            }.merge(verify),
-            method: :delete,
-            title:  options.fetch(:title, title(obj) + " löschen"),
-            class:  options.fetch(:class, 'btn btn-danger')
+          link_to icon_delete, mypoly, delete_options.merge(options)
         end
       end
 
@@ -164,6 +147,24 @@ module Wobapphelpers
         else
           model
         end
+      end
+
+      def default_options
+        {
+          remote: false,
+          class: 'btn btn-secondary',
+        }
+      end
+
+      def delete_options
+        {
+          remote: false,
+          class: 'btn btn-danger',
+          data: {
+            confirm: "Sie wollen das Objekt löschen.\nSind Sie sicher?"
+          },
+          method: :delete,
+        }
       end
     end
   end
