@@ -2,10 +2,25 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// --- colors
+$custom: #669933;
+$colors: (
+  "blue": $custom
+);
+$theme-colors: (
+  "primary": $custom,
+  "custom": $custom
+);
+
 //bootstrap
 $icon-font-path: "bootstrap/dist/fonts/";
-@import "bootstrap/dist/css/bootstrap.css";
+@import "bootstrap/scss/bootstrap";
 
 body {
-  padding-top: 50px;
+  padding-top: 60px;
 }
+
+.btn {
+  margin-bottom: .2em;
+}
+
