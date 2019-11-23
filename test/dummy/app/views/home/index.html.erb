@@ -32,9 +32,9 @@
 <hr>
 <h2> Check for polymorphic variants like [engine, Blog] </h2>
 
-<%= new_link([nil, Post]) %>
-<%= edit_link([nil, Post.first]) %>
-<%= delete_link([nil, Post.first]) %>
+<%= new_link([nil, Post], data: {whatever: :green}) %>
+<%= edit_link([nil, Post.first], data: {whatever: 'blue'}) %>
+<%= delete_link([nil, Post.first], data: {whatever: :red}) %>
 
 <hr>
 <p>

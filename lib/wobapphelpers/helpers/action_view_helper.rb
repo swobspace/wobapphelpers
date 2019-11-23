@@ -47,7 +47,11 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          link_to icon_delete, mypoly, delete_options(obj).merge(options)
+          options = delete_options(obj).merge(options)
+          if options[:data][:confirm].blank?
+            options[:data][:confirm] = confirm_message(obj)
+          end
+          link_to icon_delete, mypoly, options
         end
       end
 
@@ -166,12 +170,13 @@ module Wobapphelpers
           title: title(obj, :destroy),
           remote: false,
           class: 'btn btn-danger',
-          data: {
-            confirm: "#{title(obj, :destroy)}?\n" + 
-                     t('wobapphelpers.actions.destroy_confirm')
-          },
+          data: {},
           method: :delete,
         }
+      end
+
+      def confirm_message(obj)
+       "#{title(obj, :destroy)}?\n" + t('wobapphelpers.actions.destroy_confirm')
       end
     end
   end
