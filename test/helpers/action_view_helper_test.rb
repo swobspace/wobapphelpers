@@ -27,9 +27,9 @@ class ActionViewHelperTest < ActionDispatch::IntegrationTest
 	     "No back button found"
     end
 
-    should "cancel_button renders i with class fa" do
+    should "cancel_button renders i with class fas" do
       visit new_post_path
-      assert page.has_text?('Post/new')
+      assert page.has_text?('Posting erstellen')
       within('form') do
 	assert page.has_link?('Abbrechen'), "button submit not found"
 	assert find('a.btn.btn-secondary i.fas.fa-trash'), 
