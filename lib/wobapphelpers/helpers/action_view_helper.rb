@@ -19,8 +19,9 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:create, obj)
           options.symbolize_keys!
-          link_to obj.model_name.human + " erstellen",
-            new_polymorphic_path(mypoly), default_options.merge(options)
+          link_to title(obj, :new),
+            new_polymorphic_path(mypoly), 
+              default_options(obj, :new).merge(options)
         end
       end
 
@@ -28,7 +29,8 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:read, obj)
           options.symbolize_keys!
-          link_to icon_show, polymorphic_path(mypoly), default_options.merge(options)
+          link_to icon_show, polymorphic_path(mypoly), 
+            default_options(obj, :show).merge(options)
         end
       end
 
@@ -36,7 +38,8 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:edit, obj)
           options.symbolize_keys!
-          link_to icon_edit, edit_polymorphic_path(mypoly), default_options.merge(options)
+          link_to icon_edit, edit_polymorphic_path(mypoly), 
+            default_options(obj, :edit).merge(options)
         end
       end
 
@@ -44,7 +47,7 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          link_to icon_delete, mypoly, delete_options.merge(options)
+          link_to icon_delete, mypoly, delete_options(obj).merge(options)
         end
       end
 
@@ -117,13 +120,14 @@ module Wobapphelpers
         end
       end
 
-      def title(obj)
+      def title(obj, action)
         if obj.kind_of? Class
           model = obj
         else
           model = obj.class
         end
-        t('activerecord.models.' + model.model_name.i18n_key.to_s)
+        t(action.to_s, scope: "wobapphelpers.actions".to_sym,
+          model: t('activerecord.models.' + model.model_name.i18n_key.to_s))
       end
 
       def controlleraction
@@ -131,8 +135,8 @@ module Wobapphelpers
         namespace     = controller.controller_path
         resource_name = t("activerecord.models.#{namespace.singularize}")
         search_for    = [namespace, action].join(".").to_sym
-        t(search_for, scope: "wobapphelpers.controller".to_sym,
-          default: action.to_sym, name: resource_name)
+        t(search_for, scope: "wobapphelpers.actions".to_sym,
+          default: action.to_sym, model: resource_name)
       end
 
       def _can?(action, obj)
@@ -149,19 +153,22 @@ module Wobapphelpers
         end
       end
 
-      def default_options
+      def default_options(obj, action)
         {
+          title: title(obj, action),
           remote: false,
           class: 'btn btn-secondary',
         }
       end
 
-      def delete_options
+      def delete_options(obj)
         {
+          title: title(obj, :destroy),
           remote: false,
           class: 'btn btn-danger',
           data: {
-            confirm: "Sie wollen das Objekt löschen.\nSind Sie sicher?"
+            confirm: "#{title(obj, :destroy)}?\n" + 
+                     t('wobapphelpers.actions.destroy_confirm')
           },
           method: :delete,
         }
