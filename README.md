@@ -3,7 +3,7 @@ wobapphelpers
 
 This is the ''master'' branch, for use with rails >= 5.2.
 
-BREAKING CHANGE sind 3-0: please reinstall wobapphelpers locales with:
+BREAKING CHANGE between 3-0 -> master: please reinstall wobapphelpers locales with:
 
   * rails g wobapphelpers:install
 
