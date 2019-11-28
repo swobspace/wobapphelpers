@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wobapphelpers (3.1.1)
+    wobapphelpers (4.0.0)
       coffee-rails
       font-awesome-sass (>= 4.7, <= 6)
       jquery-rails
