@@ -18,13 +18,13 @@ Gem::Specification.new do |s|
   s.test_files    = Dir['test/**/*.rb']
   s.require_paths = ['lib']
 
-  s.add_runtime_dependency "responders"
-  s.add_runtime_dependency "rails", "~> 5.0"
   s.add_runtime_dependency 'sassc-rails'
+  s.add_runtime_dependency "rails", ">= 5.0"
   s.add_runtime_dependency 'coffee-rails'
   s.add_runtime_dependency 'jquery-rails'
   s.add_runtime_dependency 'record_tag_helper', '~> 1.0'
   s.add_runtime_dependency 'font-awesome-sass', '>=4.7', '<= 6'
+  s.add_runtime_dependency "responders"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "capybara"

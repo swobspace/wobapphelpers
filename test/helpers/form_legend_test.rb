@@ -12,7 +12,7 @@ class FormLegendTest < ActionController::TestCase
     get :new
     assert_select "div.row" do
       assert_select "div" do
-        assert_select "legend", text: "Post/new"
+        assert_select "legend", text: "Posting erstellen"
       end
     end
   end
@@ -21,7 +21,7 @@ class FormLegendTest < ActionController::TestCase
     get :edit, params: { id: @p1 }
     assert_select "div.row" do
       assert_select "div" do
-        assert_select "legend", text: "Post/edit"
+        assert_select "legend", text: "Posting bearbeiten"
       end
     end
   end

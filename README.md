@@ -1,16 +1,22 @@
 wobapphelpers
 =============
 
-Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap. 
+This is the ''master'' branch, for use with rails >= 5.2.
 
-This is the ''master'' branch, for use with rails 5.1.
+BREAKING CHANGE between 3-0 -> master: please reinstall wobapphelpers locales with:
+
+  * rails g wobapphelpers:install
+
+
+Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap. 
 
 Requirements
 ------------
 
 | branch     | rails | ruby   | bootstrap | icons       | 
 |------------|-------|--------|-----------|-------------|
-| master     | 5.1   | >= 2.3 | v4        | fontawesome |
+| master     | 5.2   | >= 2.3 | v4        | fontawesome |
+| 3-0-stable | 5.1   | >= 2.3 | v4        | fontawesome |        
 | 2-0-stable | 5.0   | >= 2.2 | v3        | glyphicons  |        
 | 1-0-stable | 4.2   | >= 2.0 | v3        | glyphicons  |
 
@@ -149,7 +155,7 @@ other variable names you have to use :add_breadcrumbs_for, i.e.
 Licence
 -------
 
-Wobapphelpers Copyright (C) 2014-2018  Wolfgang Barth
+Wobapphelpers Copyright (C) 2014-2019  Wolfgang Barth
 
 MIT License, see [LICENSE](LICENSE)
 

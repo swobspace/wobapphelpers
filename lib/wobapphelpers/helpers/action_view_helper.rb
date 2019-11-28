@@ -19,11 +19,9 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:create, obj)
           options.symbolize_keys!
-          link_to obj.model_name.human + " erstellen",
-            new_polymorphic_path(mypoly),
-            remote: options.fetch(:remote, false),
-            title: options.fetch(:title, title(obj) + " hinzufügen"),
-            class: options.fetch(:class, 'btn btn-secondary')
+          link_to title(obj, :new),
+            new_polymorphic_path(mypoly), 
+              default_options(obj, :new).merge(options)
         end
       end
 
@@ -31,10 +29,8 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:read, obj)
           options.symbolize_keys!
-          link_to icon_show, polymorphic_path(mypoly),
-            remote: options.fetch(:remote, false),
-            title:  options.fetch(:title, title(obj) + " anzeigen"),
-            class:  options.fetch(:class, 'btn btn-secondary')
+          link_to icon_show, polymorphic_path(mypoly), 
+            default_options(obj, :show).merge(options)
         end
       end
 
@@ -42,10 +38,8 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:edit, obj)
           options.symbolize_keys!
-          link_to icon_edit, edit_polymorphic_path(mypoly),
-            remote: options.fetch(:remote, false),
-            title:  options.fetch(:title, title(obj) + " bearbeiten"),
-            class:  options.fetch(:class, 'btn btn-secondary')
+          link_to icon_edit, edit_polymorphic_path(mypoly), 
+            default_options(obj, :edit).merge(options)
         end
       end
 
@@ -53,15 +47,11 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          verify = options.has_key?(:verify) ? { verify: options.fetch(:verify) } : {}
-          link_to icon_delete, mypoly,
-            remote: options.fetch(:remote, false),
-            data: {
-              confirm: options.fetch(:confirm, "Sie wollen das Objekt löschen.\nSind Sie sicher?")
-            }.merge(verify),
-            method: :delete,
-            title:  options.fetch(:title, title(obj) + " löschen"),
-            class:  options.fetch(:class, 'btn btn-danger')
+          options = delete_options(obj).merge(options)
+          if options[:data][:confirm].blank?
+            options[:data][:confirm] = confirm_message(obj)
+          end
+          link_to icon_delete, mypoly, options
         end
       end
 
@@ -76,7 +66,7 @@ module Wobapphelpers
 	    idx   =  session[:breadcrumbs].size - 2
 	    title = bc[0]
 	    goto  = bc[1]
-	    breadcrumb_idx(label, goto, idx, 'btn btn-secondary')
+	    set_breadcrumb(label, goto, class: 'btn btn-secondary')
 	  else
 	    link_to label, url_for(:back), :class => 'btn btn-secondary'
 	  end
@@ -134,13 +124,14 @@ module Wobapphelpers
         end
       end
 
-      def title(obj)
+      def title(obj, action)
         if obj.kind_of? Class
           model = obj
         else
           model = obj.class
         end
-        t('activerecord.models.' + model.model_name.i18n_key.to_s)
+        t(action.to_s, scope: "wobapphelpers.actions".to_sym,
+          model: t('activerecord.models.' + model.model_name.i18n_key.to_s))
       end
 
       def controlleraction
@@ -148,8 +139,8 @@ module Wobapphelpers
         namespace     = controller.controller_path
         resource_name = t("activerecord.models.#{namespace.singularize}")
         search_for    = [namespace, action].join(".").to_sym
-        t(search_for, scope: "wobapphelpers.controller".to_sym,
-          default: action.to_sym, name: resource_name)
+        t(search_for, scope: "wobapphelpers.actions".to_sym,
+          default: action.to_sym, model: resource_name)
       end
 
       def _can?(action, obj)
@@ -164,6 +155,28 @@ module Wobapphelpers
         else
           model
         end
+      end
+
+      def default_options(obj, action)
+        {
+          title: title(obj, action),
+          remote: false,
+          class: 'btn btn-secondary',
+        }
+      end
+
+      def delete_options(obj)
+        {
+          title: title(obj, :destroy),
+          remote: false,
+          class: 'btn btn-danger',
+          data: {},
+          method: :delete,
+        }
+      end
+
+      def confirm_message(obj)
+       "#{title(obj, :destroy)}?\n" + t('wobapphelpers.actions.destroy_confirm')
       end
     end
   end

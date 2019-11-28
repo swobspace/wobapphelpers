@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'sass'
 
 class ShowEditDeleteLinkHelperTest < ActionView::TestCase
   include Wobapphelpers::Helpers::All
