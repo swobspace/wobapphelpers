@@ -7,6 +7,8 @@ module Wobapphelpers
         if form.object.send(poly).present?
           msg += poly_type_display(form, poly)
           msg += poly_id_select(form, poly, form.object.send("#{poly}_type"), :all, options)
+        elsif types.size == 0
+          # empty
         elsif types.size == 1
           msg += poly_type_display(form, poly, Array(types).first)
           msg += poly_id_select(form, poly, Array(types).first, :all, options)
