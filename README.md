@@ -15,7 +15,7 @@ Requirements
 
 | branch     | rails | ruby   | bootstrap | icons       | 
 |------------|-------|--------|-----------|-------------|
-| master     | 5.2   | >= 2.3 | v4        | fontawesome |
+| master     | >=5.2 | >= 2.3 | v4        | fontawesome |
 | 3-0-stable | 5.1   | >= 2.3 | v4        | fontawesome |        
 | 2-0-stable | 5.0   | >= 2.2 | v3        | glyphicons  |        
 | 1-0-stable | 4.2   | >= 2.0 | v3        | glyphicons  |
@@ -25,9 +25,10 @@ Requirements
 Installation
 ------------
 
+    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "master"
+    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "3-0-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "2-0-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "1-0-stable"
-    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "master"
 
 Generators
 ----------
@@ -155,7 +156,7 @@ other variable names you have to use :add_breadcrumbs_for, i.e.
 Licence
 -------
 
-Wobapphelpers Copyright (C) 2014-2019  Wolfgang Barth
+Wobapphelpers Copyright (C) 2014-2020  Wolfgang Barth
 
 MIT License, see [LICENSE](LICENSE)
 
