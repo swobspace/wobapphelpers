@@ -1,4 +1,4 @@
 module Wobapphelpers
-  VERSION = "4.0.1".freeze
-  RELEASEDATE = "2020-04-04".freeze
+  VERSION = "4.1.0".freeze
+  RELEASEDATE = "2020-04-05".freeze
 end
