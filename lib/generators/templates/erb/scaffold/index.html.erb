@@ -9,11 +9,11 @@
         id: "<%= plural_table_name + "_table" %>",
         class: "table table-bordered table-responsive-xl",
         data: {
-          target: 'datatables.datatable',
+          'datatables-target': 'datatable',
           order: [[0, 'desc']].to_json
         } do %>
     <thead>
-      <tr>
+      <tr class="search">
     <% attributes.each do |attribute| -%>
         <th><%%= t('attributes.<%= attribute.name %>') %></th>
     <% end -%>
