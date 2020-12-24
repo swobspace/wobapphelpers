@@ -23,6 +23,7 @@ module Wobapphelpers
         show:       'eye',
         star:       'star',
         up:         'arrow-up',
+        link:       'link',
       }
       
       def icon(what)
