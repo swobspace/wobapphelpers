@@ -8,7 +8,7 @@ guard :minitest, bundler: true do
   watch(%r{^test/(.+)\.rb$}) { "test" }
 end
 
-guard 'rails', daemon: true, server: 'puma', root: './test/dummy', host: 'localhost' do
+guard 'rails', daemon: true, root: './test/dummy', host: 'localhost' do
   watch('Gemfile.lock')
   watch(%r{^(config|lib)/.*})
 end
