@@ -94,10 +94,9 @@ module Wobapphelpers
 	    my_class = severity.to_s
 	  end
 	  msg += %Q[<div id="#{severity.to_s}" class="#{my_class} alert-dismissable fade show noprint" role="alert">]
-	  msg += %Q[<button type="button" class="close" data-dismiss="alert" aria-label="Clse">]
-          msg += %Q[<span aria-hidden="true">&times;</span>]
-	  msg += %Q[</button>]
 	  msg += flash[severity]
+	  msg += %Q[<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close">]
+	  msg += %Q[</button>]
 	  msg += %Q[</div>]
 	end
 	msg.html_safe
