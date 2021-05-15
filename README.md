@@ -1,21 +1,22 @@
 wobapphelpers
 =============
 
-This is the ''master'' branch, for use with rails >= 5.2.
+This is the ''development'' branch, for use with rails >= 6.1 and bootstrap v5.
 
 BREAKING CHANGE between 3-0 -> master: please reinstall wobapphelpers locales with:
 
   * rails g wobapphelpers:install
 
 
-Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap. 
+Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap.
 
 Requirements
 ------------
 
-| branch     | rails | ruby   | bootstrap | icons       | 
+| branch     | rails | ruby   | bootstrap | icons       |
 |------------|-------|--------|-----------|-------------|
-| master     | >=5.2 | >= 2.3 | v4        | fontawesome |
+| master     | >=6.1 | >= 2.7 | v5 !      | fontawesome |
+| 4-stable   | >=5.2 | >= 2.5 | v4        | fontawesome |
 | 3-0-stable | 5.1   | >= 2.3 | v4        | fontawesome |        
 | 2-0-stable | 5.0   | >= 2.2 | v3        | glyphicons  |        
 | 1-0-stable | 4.2   | >= 2.0 | v3        | glyphicons  |
@@ -26,6 +27,7 @@ Installation
 ------------
 
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "master"
+    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "4-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "3-0-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "2-0-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "1-0-stable"
@@ -35,9 +37,9 @@ Generators
 
 wobapphelpers comes with some generators to install templates and so on:
 
-  * rails g wobapphelpers:install : installs some locales 
-  * rails g wobapphelpers:scaffold_templates : installs scaffold erb and templates 
-and a controller template using simple_form and bootstrap, responders and the 
+  * rails g wobapphelpers:install : installs some locales
+  * rails g wobapphelpers:scaffold_templates : installs scaffold erb and templates
+and a controller template using simple_form and bootstrap, responders and the
 famous respond_with method.
 
 Usage
@@ -60,7 +62,7 @@ show_flash, and more ...
 
 ### Responders
 
-Predefined settings for FlashResponder in gem 'responders' 
+Predefined settings for FlashResponder in gem 'responders'
 (https://github.com/plataformatec/responders) including german locales.
 
     # myapp/app/controllers/application_controller.rb
@@ -71,8 +73,8 @@ Predefined settings for FlashResponder in gem 'responders'
 
 ### Breadcrumbs
 
-Build breadcrumbs in the sense of backtrace, not of deepness. An example for 
-classical breadcrumbs is 
+Build breadcrumbs in the sense of backtrace, not of deepness. An example for
+classical breadcrumbs is
 
     Home >> Posts >> posts#show
 
@@ -80,12 +82,12 @@ Wobapphelpers::Breadcrumbs store a the last 6 urls like this:
 
     Home >> Posts >> Post(1) >> Others >> Posts
 
-A breadcrumb will only be 
-added if the url differs from the last breadcrumb on the stack. 
-Wobapphelper::Breadcrumbs should be use in normal display actions like index 
+A breadcrumb will only be
+added if the url differs from the last breadcrumb on the stack.
+Wobapphelper::Breadcrumbs should be use in normal display actions like index
 or show, but not in actions which are redirecting to others (not in :create,
-:update) and best not to use in form actions like :edit and :new. The latter 
-is a question of user experience, not a technical question. The back_link 
+:update) and best not to use in form actions like :edit and :new. The latter
+is a question of user experience, not a technical question. The back_link
 from Wobapphelpers::Helpers::ActionViewHelper uses breadcrumbs, if available,
 so it would be better to build your own back link if you set breadcrumbs for
 :new and :edit.
@@ -111,9 +113,9 @@ Pay attention to the correct order of before_actions:
       before_action :set_post, only: [:show, :edit, :update, :destroy]
       before_action :add_breadcrumb_show, only: [:show]
       ....
-    
+
       private
-    
+
       def set set_post
        @post = Post.find(params[:id])
       end
@@ -135,11 +137,11 @@ Use builtin styling:
     *= require wobapphelpers/breadcrumbs
     /* ...
 
-or build your own stuff. :render_breadcrumbs gives you 
+or build your own stuff. :render_breadcrumbs gives you
 a div#breadcrumbs tag.
 
 
-For :add_breadcrumb_show the variable must be named after your Model. For 
+For :add_breadcrumb_show the variable must be named after your Model. For
 other variable names you have to use :add_breadcrumbs_for, i.e.
 
     # myapp/app/controllers/posts_controller.rb
@@ -159,4 +161,3 @@ Licence
 Wobapphelpers Copyright (C) 2014-2021  Wolfgang Barth
 
 MIT License, see [LICENSE](LICENSE)
-
