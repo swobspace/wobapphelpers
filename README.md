@@ -1,32 +1,31 @@
 wobapphelpers
 =============
-
-This is the ''development'' branch, for use with rails >= 6.1 and bootstrap v5.
-
-BREAKING CHANGE between 3-0 -> master: please reinstall wobapphelpers locales with:
-
-  * rails g wobapphelpers:install
-
-
 Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap.
+
+This is the latest branch, optimized for use with rails >= 6.1 with turbo-rails and bootstrap v5. For other branches see Requirements.
+
 
 Requirements
 ------------
 
 | branch     | rails | ruby   | bootstrap | icons       |
 |------------|-------|--------|-----------|-------------|
-| master     | >=6.1 | >= 2.7 | v5 !      | fontawesome |
-| 4-stable   | >=5.2 | >= 2.5 | v4        | fontawesome |
-| 3-0-stable | 5.1   | >= 2.3 | v4        | fontawesome |        
+| master (6.x) | >=6.1 | >= 2.7 | v5 !      | fontawesome v5 |
+| 5-stable   | >=6.1 | >= 2.7 | v5 !      | fontawesome v5 |
+| 4-stable   | >=5.2 | >= 2.5 | v4        | fontawesome v5 |
+| 3-0-stable | 5.1   | >= 2.3 | v4        | fontawesome v4 |        
 | 2-0-stable | 5.0   | >= 2.2 | v3        | glyphicons  |        
 | 1-0-stable | 4.2   | >= 2.0 | v3        | glyphicons  |
 
-* simple_form >= 3.3
+BREAKING CHANGE between 3-0 -> master: please reinstall wobapphelpers locales with:
+
+  * rails g wobapphelpers:install
 
 Installation
 ------------
 
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "master"
+    gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "5-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "4-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "3-0-stable"
     gem 'wobapphelpers', github: 'swobspace/wobapphelpers', branch: "2-0-stable"
@@ -47,7 +46,7 @@ Usage
 
 ### Helpers
 
-Helpers to ease use of glyphicon icons, predefined action links (i.e. edit_link),
+Helpers to ease use of font icons, predefined action links (i.e. edit_link),
 show_flash, and more ...
 
     # myapp/app/helpers/application_helper.rb:
@@ -158,6 +157,5 @@ other variable names you have to use :add_breadcrumbs_for, i.e.
 Licence
 -------
 
-Wobapphelpers Copyright (C) 2014-2021  Wolfgang Barth
-
+Wobapphelpers Copyright (C) 2014-2022
 MIT License, see [LICENSE](LICENSE)
