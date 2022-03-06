@@ -13,7 +13,7 @@
 <tbody>
 
 <% @posts.each do |post| %>
-  <%= content_tag_for(:tr, post) do %>
+  <%= content_tag(:tr, post, id: dom_id(post), class: dom_class(post)) do %>
     <td><%= post.subject %></td>
     <td><%= post.body %></td>
     <td><%= post.user %></td>
