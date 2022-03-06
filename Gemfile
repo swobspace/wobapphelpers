@@ -15,9 +15,6 @@ gemspec
 
 
 group :development, :test do
-  gem 'sassc'
-  gem 'simple_form'
-  gem 'record_tag_helper', '~> 1.0' 
-  gem 'font-awesome-sass'
-  gem 'guard-livereload', require: false
+  # gem 'simple_form'
+  # gem 'guard-livereload', require: false
 end
