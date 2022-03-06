@@ -55,6 +55,18 @@ module Wobapphelpers
         end
       end
 
+      def delete_button(poly, options = {})
+        mypoly, obj = get_parts(poly)
+        if _can?(:destroy, obj)
+          options.symbolize_keys!
+          options = delete_options(obj).merge(options)
+          if options[:data][:turbo_confirm].blank?
+            options[:data][:turbo_confirm] = confirm_message(obj)
+          end
+          button_to icon_delete, mypoly, options
+        end
+      end
+
       def back_link(options = {})
         options.symbolize_keys!
 	unless options[:path].nil?
@@ -66,16 +78,16 @@ module Wobapphelpers
 	    idx   =  session[:breadcrumbs].size - 2
 	    title = bc[0]
 	    goto  = bc[1]
-	    set_breadcrumb(label, goto, class: 'btn btn-secondary')
+	    set_breadcrumb(label, goto, class: 'btn btn-secondary me-1')
 	  else
-	    link_to label, url_for(:back), :class => 'btn btn-secondary'
+	    link_to label, url_for(:back), :class => 'btn btn-secondary me-1'
 	  end
         end
       end
 
       def cancel_button
         link_to icon_cancel + " " + t('wobapphelpers.helpers.cancel'),
-          url_for(:back), :class => 'btn btn-secondary'
+          url_for(:back), :class => 'btn btn-secondary me-1'
       end
 
       def show_flash
@@ -151,7 +163,7 @@ module Wobapphelpers
         {
           title: title(obj, action),
           remote: false,
-          class: 'btn btn-secondary',
+          class: 'btn btn-secondary me-1',
         }
       end
 
@@ -159,7 +171,7 @@ module Wobapphelpers
         {
           title: title(obj, :destroy),
           remote: false,
-          class: 'btn btn-danger',
+          class: 'btn btn-danger me-1',
           data: { turbo_method: :delete }
         }
       end
