@@ -48,8 +48,8 @@ module Wobapphelpers
         if _can?(:destroy, obj)
           options.symbolize_keys!
           options = delete_options(obj).merge(options)
-          if options[:data][:confirm].blank?
-            options[:data][:confirm] = confirm_message(obj)
+          if options[:data][:turbo_confirm].blank?
+            options[:data][:turbo_confirm] = confirm_message(obj)
           end
           link_to icon_delete, mypoly, options
         end
@@ -144,16 +144,7 @@ module Wobapphelpers
 
       def _can?(action, obj)
         return true if Wobapphelpers.cancan == :none
-        obj = _normalize(obj) if obj.kind_of? Class
         can? action, obj
-      end
-
-      def _normalize(model)
-        if Wobapphelpers.cancan == :cancan2
-          model.model_name.downcase.pluralize.to_sym
-        else
-          model
-        end
       end
 
       def default_options(obj, action)
@@ -169,8 +160,7 @@ module Wobapphelpers
           title: title(obj, :destroy),
           remote: false,
           class: 'btn btn-danger',
-          data: {},
-          method: :delete,
+          data: { turbo_method: :delete }
         }
       end
 
