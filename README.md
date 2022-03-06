@@ -2,8 +2,7 @@ wobapphelpers
 =============
 Rails helpers and more shared between common wob rails applications. Depends on twitter bootstrap.
 
-This is the latest branch, optimized for use with rails >= 6.1 with turbo-rails and bootstrap v5. For other branches see Requirements.
-
+This is the 5-stable branch. For other branches see Requirements.
 
 Requirements
 ------------
