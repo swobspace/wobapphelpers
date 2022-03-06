@@ -34,5 +34,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-rails'
   s.add_development_dependency 'guard-bundler'
   s.add_development_dependency 'puma'
+  s.add_development_dependency 'turbo-rails'
+  s.add_development_dependency 'jsbundling-rails', "~> 1.0"
+  s.add_development_dependency 'cssbundling-rails'
 
 end

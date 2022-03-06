@@ -41,3 +41,6 @@ config/secrets.yml
 .rvmrc
 
 /node_modules
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

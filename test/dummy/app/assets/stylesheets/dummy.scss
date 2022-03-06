@@ -1,25 +1,3 @@
-//fontawesome
-@import "font-awesome-sprockets";
-@import "font-awesome";
-
-//bootstrap
-$icon-font-path: "bootstrap/dist/fonts/";
-@import "bootstrap/scss/functions";
-
-// --- colors
-$custom: #13795b;
-$primary: $custom;
-$custom-colors: ( "custom": $custom );
-
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/mixins";
-$theme-colors: map-merge($theme-colors, $custom-colors);
-
-@import "bootstrap/scss/bootstrap";
-
-
-
-
 body {
   padding-top: 60px;
 }
