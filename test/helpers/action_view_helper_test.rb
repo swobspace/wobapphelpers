@@ -11,11 +11,11 @@ class ActionViewHelperTest < ActionDispatch::IntegrationTest
     should "show posts#index" do
       visit posts_path
       within('table tbody') do
-	assert all(:xpath, '//a[contains(@class, "btn btn-secondary") and contains(@title, "Posting anzeigen")]').count == 2, 
+	assert all(:xpath, '//a[contains(@class, "btn btn-secondary me-1") and contains(@title, "Posting anzeigen")]').count == 2, 
 	       "No show posting link found"
-	assert all(:xpath, '//a[contains(@class,"btn btn-secondary") and contains(@title, "Posting bearbeiten")]').count == 2, 
+	assert all(:xpath, '//a[contains(@class,"btn btn-secondary me-1") and contains(@title, "Posting bearbeiten")]').count == 2, 
 	       "No edit posting link found"
-	assert (all(:xpath, '//a[contains(@class,"btn btn-danger") and contains(@data-method, "delete") and contains(@title, "Posting löschen")]').length == 2), 
+	assert (all(:xpath, '//a[contains(@class,"btn btn-danger me-1") and contains(@data-turbo-method, "delete") and contains(@title, "Posting löschen")]').length == 2), 
 	       "No delete posting link found"
       end
       assert page.has_link?('Posting erstellen'), "no new post link found"

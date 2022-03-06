@@ -35,7 +35,7 @@ class ShowEditDeleteLinkHelperTest < ActionView::TestCase
     render plain: delete_link(@post, class: 'btn btn-small', 
                             title: 'Test title', remote: true)
 
-    assert_select 'a[class=?][title=?][data-remote=?][data-method=?]', 
+    assert_select 'a[class=?][title=?][data-remote=?][data-turbo-method=?]', 
                   "btn btn-small", "Test title", "true", "delete"
   end
 
