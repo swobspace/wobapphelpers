@@ -59,11 +59,13 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          options = delete_options(obj).merge(options)
+          options = delete_options(obj).merge(options).merge(method: :delete)
           if options[:data][:turbo_confirm].blank?
             options[:data][:turbo_confirm] = confirm_message(obj)
           end
-          button_to icon_delete, mypoly, options
+          button_to mypoly, options do
+            icon_delete
+          end
         end
       end
 
