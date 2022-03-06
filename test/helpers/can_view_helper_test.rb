@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'jquery-rails'
 require 'shoulda-context'
 
 class CanViewHelperTest < ActionController::TestCase
