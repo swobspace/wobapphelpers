@@ -4,7 +4,7 @@ SimpleForm.setup do |config|
   config.button_class = 'btn btn-default'
   config.boolean_label_class = nil
 
-  config.wrappers :vertical_form, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :vertical_form, tag: 'div', class: 'mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label, class: 'control-label'
@@ -16,7 +16,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :vertical_file_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :vertical_file_input, tag: 'div', class: 'mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label, class: 'control-label'
@@ -28,7 +28,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :vertical_boolean, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :vertical_boolean, tag: 'div', class: 'mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
 
@@ -40,7 +40,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
-  config.wrappers :vertical_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :vertical_radio_and_checkboxes, tag: 'div', class: 'mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label_input
@@ -48,7 +48,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
-  config.wrappers :horizontal_form, tag: 'div', class: 'form-group row', error_class: 'has-error' do |b|
+  config.wrappers :horizontal_form, tag: 'div', class: 'mb-3 row', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label, class: 'col-sm-3 col-md-2 col-form-label'
@@ -60,7 +60,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :horizontal_file_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :horizontal_file_input, tag: 'div', class: 'mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label, class: 'col-sm-3 col-md-2 control-label'
@@ -72,7 +72,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :horizontal_boolean, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :horizontal_boolean, tag: 'div', class: 'mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
 
@@ -86,7 +86,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :horizontal_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :horizontal_radio_and_checkboxes, tag: 'div', class: 'mb-3', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
 
