@@ -7,7 +7,7 @@ de:
   attributes:
     subject: Betreff
     body: Inhalt
-    user: Author
+    user: Autor
     release: Datum
 
   controller:
