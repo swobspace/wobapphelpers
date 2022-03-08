@@ -20,7 +20,7 @@ module Wobapphelpers
         if _can?(:create, obj)
           options.symbolize_keys!
           link_to title(obj, :new),
-            new_polymorphic_path(mypoly), 
+            new_polymorphic_path(mypoly),
               default_options(obj, :new).merge(options)
         end
       end
@@ -29,7 +29,7 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:read, obj)
           options.symbolize_keys!
-          link_to icon_show, polymorphic_path(mypoly), 
+          link_to icon_show, polymorphic_path(mypoly),
             default_options(obj, :show).merge(options)
         end
       end
@@ -38,7 +38,7 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:edit, obj)
           options.symbolize_keys!
-          link_to icon_edit, edit_polymorphic_path(mypoly), 
+          link_to icon_edit, edit_polymorphic_path(mypoly),
             default_options(obj, :edit).merge(options)
         end
       end
@@ -47,7 +47,7 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          options = delete_options(obj).merge(options)
+          options = delete_link_defaults(obj).merge(options)
           if options[:data][:turbo_confirm].blank?
             options[:data][:turbo_confirm] = confirm_message(obj)
           end
@@ -59,9 +59,12 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          options = delete_options(obj).merge(options).merge(method: :delete)
-          if options[:data][:turbo_confirm].blank?
-            options[:data][:turbo_confirm] = confirm_message(obj)
+          options = delete_button_defaults(obj).merge(options)
+          if options[:form].blank?
+            options[:form] = Hash.new
+          end
+          if options[:form][:'data-turbo-confirm'].blank?
+            options[:form][:'data-turbo-confirm'] = confirm_message(obj)
           end
           button_to mypoly, options do
             icon_delete
@@ -169,13 +172,20 @@ module Wobapphelpers
         }
       end
 
-      def delete_options(obj)
+      def common_delete_defaults(obj)
         {
           title: title(obj, :destroy),
           remote: false,
-          class: 'btn btn-danger me-1',
-          data: { turbo_method: :delete }
+          class: 'btn btn-danger me-1'
         }
+      end
+
+      def delete_link_defaults(obj)
+        { data: { turbo_method: :delete } }.merge(common_delete_defaults(obj))
+      end
+
+      def delete_button_defaults(obj)
+        { method: :delete }.merge(common_delete_defaults(obj))
       end
 
       def confirm_message(obj)
