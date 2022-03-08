@@ -47,10 +47,9 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          options = delete_link_defaults(obj).merge(options)
-          if options[:data][:turbo_confirm].blank?
-            options[:data][:turbo_confirm] = confirm_message(obj)
-          end
+          options = delete_link_defaults.merge(options)
+          options[:title] ||= title(obj, :destroy)
+          options[:data][:turbo_confirm] ||= confirm_message(obj)
           link_to icon_delete, mypoly, options
         end
       end
@@ -59,13 +58,12 @@ module Wobapphelpers
         mypoly, obj = get_parts(poly)
         if _can?(:destroy, obj)
           options.symbolize_keys!
-          options = delete_button_defaults(obj).merge(options)
+          options = delete_button_defaults.merge(options)
+          options[:title] ||= title(obj, :destroy)
           if options[:form].blank?
             options[:form] = Hash.new
           end
-          if options[:form][:'data-turbo-confirm'].blank?
-            options[:form][:'data-turbo-confirm'] = confirm_message(obj)
-          end
+          options[:form][:'data-turbo-confirm'] ||= confirm_message(obj)
           button_to mypoly, options do
             icon_delete
           end
@@ -172,20 +170,19 @@ module Wobapphelpers
         }
       end
 
-      def common_delete_defaults(obj)
+      def common_delete_defaults
         {
-          title: title(obj, :destroy),
           remote: false,
           class: 'btn btn-danger me-1'
         }
       end
 
-      def delete_link_defaults(obj)
-        { data: { turbo_method: :delete } }.merge(common_delete_defaults(obj))
+      def delete_link_defaults
+        { data: { turbo_method: :delete } }.merge(common_delete_defaults)
       end
 
-      def delete_button_defaults(obj)
-        { method: :delete }.merge(common_delete_defaults(obj))
+      def delete_button_defaults
+        { method: :delete }.merge(common_delete_defaults)
       end
 
       def confirm_message(obj)
