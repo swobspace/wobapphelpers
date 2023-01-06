@@ -17,5 +17,6 @@ gemspec
 group :development, :test do
   # gem 'simple_form'
   # gem 'guard-livereload', require: false
+  gem 'mail', '< 2.8.0'
 end
 
