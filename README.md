@@ -157,5 +157,5 @@ other variable names you have to use :add_breadcrumbs_for, i.e.
 Licence
 -------
 
-Wobapphelpers Copyright (C) 2014-2022
+Wobapphelpers Copyright (C) 2014-2023
 MIT License, see [LICENSE](LICENSE)
