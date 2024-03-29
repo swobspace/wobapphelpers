@@ -12,10 +12,6 @@ module Wobapphelpers
         end
       end
 
-      def copy_layout
-        copy_file "layouts/application.html.erb", "app/views/layouts/application.html.erb"
-      end
-
       def copy_initializer
         copy_file "initializers/wobapphelpers.rb", "config/initializers/wobapphelpers.rb"
       end
