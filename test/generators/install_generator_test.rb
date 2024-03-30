@@ -11,15 +11,6 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     assert_file "config/locales/wobapphelpers.en.yml"
   end
 
-  test "Assert layout is copied" do
-    run_generator
-    assert_file "app/views/layouts/application.html.erb" do |layout|
-      assert_match(/DOCTYPE html/, layout)
-      assert_match(/navbar-brand/, layout)
-      assert_match(/meta name="viewport"/, layout)
-    end
-  end
-
   test "Initializer is copied" do
     run_generator
     assert_file "config/initializers/wobapphelpers.rb" do |init|

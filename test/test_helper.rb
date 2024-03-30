@@ -55,7 +55,6 @@ end
 # For generators
 require "rails/generators/test_case"
 require "generators/wobapphelpers/install_generator"
-require "generators/wobapphelpers/scaffold_templates_generator"
 require "cancancan"
 
 class Ability
